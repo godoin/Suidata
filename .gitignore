@@ -1,0 +1,16 @@
+# macOs files
+.DS_Store
+
+# Python files
+__pycache__
+
+# Venv files
+.venv/
+*.pyc
+
+# IDE files
+.idea/
+.vscode/
+
+# Tailwind files
+static/css/output.css

@@ -17,7 +17,8 @@ A final data visualization project in fulfillment for the requirements of COMPSC
   - use `Set-ExecutionPolicy Unrestricted -Scope Process`
 - Install the required libraries: `pip install -r requirements.txt`
 - Run the program:
-  - use `python app.py`
+  - to host use `python app.py`
+  - for css use: `npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch`
 
 ## Dataset
 

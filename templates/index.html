@@ -8,9 +8,28 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/output.css') }}"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    {% block content %} {% endblock %}
+    <div class="relative">
+      <div class="fixed top-0 left-0 w-screen bg-white">
+        {% include 'layouts/navbar.html' %}
+      </div>
+
+      <div class="mt-20">
+        <div class="h-[calc(100vh)] flex flex-col">
+          <main class="flex-1">
+            {% block content %} {% endblock %}
+            <!-- {% include 'loading/intro.html' %} -->
+          </main>
+          <div class="flex-none">{% include 'layouts/footer.html' %}</div>
+        </div>
+      </div>
+    </div>
     <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>
 </html>

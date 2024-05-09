@@ -16,7 +16,8 @@ A final data visualization project in fulfillment for the requirements of COMPSC
 - If you encounter a warning when trying to the .venv (e.g., Execution Policies to run VSCode terminal):
   - use `Set-ExecutionPolicy Unrestricted -Scope Process`
 - Install the required libraries: `pip install -r requirements.txt`
-- Run the program: using `python app.py`
+- Run the program:
+  - use `python app.py`
 
 ## Dataset
 

@@ -14,3 +14,6 @@ __pycache__
 
 # Tailwind files
 static/css/output.css
+
+# Node dependencies
+node_modules/

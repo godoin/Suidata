@@ -14,16 +14,22 @@
       >
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 md:p-0 text-red-700 bg-red-700 rounded md:bg-transparent md:text-red-700 md:dark:text-red-500 dark:bg-red-600 md:dark:bg-transparent"
-            aria-current="page"
+            href="/"
+            class="block py-2 px-3 md:p-0 {% if active == 'dashboard' %} text-red-700 {% else %} text-zinc-900 {% endif %} rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Dashboard</a
           >
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            href="/data"
+            class="block py-2 px-3 md:p-0 {% if active == 'data' %} text-red-700 {% else %} text-zinc-900 {% endif %} rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >Data</a
+          >
+        </li>
+        <li>
+          <a
+            href="/reports"
+            class="block py-2 px-3 md:p-0 {% if active == 'reports' %} text-red-700 {% else %} text-zinc-900 {% endif %} rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >Reports</a
           >
         </li>

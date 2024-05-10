@@ -6,5 +6,5 @@ document.addEventListener("DOMContentLoaded", function () {
     if (modal) {
       modal.classList.add("hidden");
     }
-  }, 5000);
+  }, 4000);
 });

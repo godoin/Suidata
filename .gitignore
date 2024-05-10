@@ -4,9 +4,10 @@
 # Python files
 __pycache__/
 
-# Venv files
+# env files
 .venv/
 *.pyc
+.env
 
 # IDE files
 .idea/
@@ -17,3 +18,4 @@ static/css/output.css
 
 # Node dependencies
 node_modules/
+

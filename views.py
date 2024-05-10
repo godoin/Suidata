@@ -14,7 +14,10 @@ def dashboard():
 
 @views.route("/data")
 def get_data():
-  return render_template('data.html', title_page="Data", active="data")
+    file_path = './static/assets/data/who_suicide_statistics.csv'
+    df = utils.load_data(file_path)
+    df_preprocessed = utils.preprocess(df)
+    return render_template('data.html', title_page="Data", active="data", data=df_preprocessed.to_dict(orient='records'))
 
 @views.route("/reports")
 def reports():

@@ -22,8 +22,8 @@
       <div class="mt-20">
         <div class="h-[calc(100vh)] flex flex-col">
           <main class="flex-1">
-            {% block content %} {% endblock %}
-            <!-- {% include 'loading/intro.html' %} -->
+            {% block content %} {% endblock %} {% comment %} {% include
+            'loading/intro.html' %} {% endcomment %}
           </main>
           <div class="flex-none">{% include 'layouts/footer.html' %}</div>
         </div>

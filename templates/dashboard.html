@@ -1,5 +1,80 @@
 {% extends 'index.html' %} {% block content%}
+<div class="mt-4 space-y-4">
+  <div class="grid grid-cols-1 gap-4">
+    <div class="flex gap-x-4">
+      <div class="flex-none w-64 grid grid-cols-1 gap-4">
+        <div class="flex items-center gap-x-4 shadow rounded p-4">
+          <div class="bg-red-500 rounded-full h-16 w-16"></div>
+          <div class="space-y-4">
+            <h1 class="text-xl font-medium text-red-500">
+              {{ total_suicides }}
+            </h1>
+            <span class="text-sm text-zinc-700">Total Mortality</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-x-4 shadow rounded p-4">
+          <div class="bg-red-500 rounded-full h-16 w-16"></div>
+          <div class="space-y-4">
+            <h1 class="text-xl font-medium text-red-500">
+              {{ most_suicides_country }}
+            </h1>
+            <span class="text-sm text-zinc-700">Most Mortality</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-x-4 shadow rounded p-4">
+          <div class="bg-red-500 rounded-full h-16 w-16"></div>
+          <div class="space-y-4">
+            <h1 class="text-2xl font-medium text-red-500">
+              {{ total_countries }}
+            </h1>
+            <span class="text-sm text-zinc-700">Total Countries</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-x-4 shadow rounded p-4">
+          <div class="bg-red-500 rounded-full h-16 w-16"></div>
+          <div class="space-y-4">
+            <h1 class="text-xl font-medium text-red-500">
+              {{ largest_population_country }}
+            </h1>
+            <span class="text-sm text-zinc-700">Largest Population</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1">{% include 'charts/line-chart.html' %}</div>
+    </div>
+    <div class="flex gap-x-4">
+      <div class="flex-1">{% include 'charts/pie-chart.html' %}</div>
+      <div class="flex-none w-[30em] bg-red-600 shadow rounded relative">
+        <div class="h-full py-8 px-8 space-y-12">
+          <div class="space-y-2 w-11/12">
+            <span class="font-medium text-xl text-white">
+              Explore mortality rates and raise awareness to mental health.
+            </span>
+            <p class="text-lg text-zinc-300">
+              Every year, thousands of lives are lost to the silent struggle of
+              mental health challenges. Our reports are depicted on these
+              statistics to initiate awareness and change. Thank you for joining
+              us!
+            </p>
+          </div>
+          <div class="">
+            <a
+              href="/reports"
+              class="w-40 bg-white rounded-md px-4 py-2 text-red-500 border border-red-500 hover:bg-zinc-300"
+            >
+              Check Reports
+            </a>
+          </div>
+          <img
+            src="{{ url_for('static', filename='assets/images/mindfulness.svg') }}"
+            alt=""
+            class="absolute bottom-10 right-10 w-72"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="text-zinc-900">Dashboard Page</div>
-
+  <div class="flex-1">{% include 'charts/bar-chart.html' %}</div>
+</div>
 {% endblock %}

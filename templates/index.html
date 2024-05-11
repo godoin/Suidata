@@ -12,24 +12,39 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='assets/images/ribbon.svg') }}"
+      type="image/x-icon"
+    />
+    <script
+      src="https://kit.fontawesome.com/84e2199ce0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
   <body>
     <div class="relative">
-      <div class="fixed top-0 left-0 w-screen bg-white">
+      <div class="fixed top-0 left-0 w-screen bg-white z-50">
         {% include 'layouts/navbar.html' %}
       </div>
 
-      <div class="mt-20">
+      <div class="mt-16">
         <div class="h-[calc(100vh)] flex flex-col">
-          <main class="flex-1">
-            {% block content %} {% endblock %} {% comment %} {% include
-            'loading/intro.html' %} {% endcomment %}
+          <main class="flex-1 p-4 py-5">
+            {% block content %} {% endblock %}
+            <!-- {% include 'loading/intro.html' %} -->
+            {% include 'components/toast.html' %}
           </main>
           <div class="flex-none">{% include 'layouts/footer.html' %}</div>
         </div>
       </div>
     </div>
+    <script src="{{ url_for('static', filename='scripts/bar-chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/line-chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/pie-chart.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='scripts/column-chart.js') }}"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>
 </html>

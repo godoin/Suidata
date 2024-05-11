@@ -2,7 +2,7 @@
 
 ## Objective
 
-A final data visualization project in fulfillment for the requirements of COMPSCI E3 - Professional Elective. The objective is to read, preprocess and visualize a dataset, closely using TABLEAU functions or operations.
+A final data visualization project in fulfillment for the requirements of COMPSCI E3 - Professional Elective. The objective is to read, preprocess and visualize a dataset.
 
 ## Installation
 

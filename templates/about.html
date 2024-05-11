@@ -1,0 +1,27 @@
+{% extends 'index.html' %} {% block content %}
+
+<div class="xl:max-w-9xl mx-auto mt-16">
+  <div
+    class="grid grid-cols-1 justify-center items-stretch text-center gap-y-8"
+  >
+    <div class="w-full flex justify-center">
+      <img
+        src="{{ url_for('static', filename='assets/images/about_img.svg') }}"
+        alt="Ribbon"
+        class="object-fit w-[30em]"
+      />
+    </div>
+    <div class="w-full flex justify-center">
+      <div class="w-9/12 p-4 space-y-4">
+        <h1 class="text-red-500 text-3xl">What is this page about?</h1>
+        <p class="text-zinc-700 text-lg">
+          A final data visualization project in fulfillment for the requirements
+          of COMPSCI E3 - Professional Elective. The objective is to read,
+          preprocess and visualize a dataset.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

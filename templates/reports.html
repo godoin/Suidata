@@ -1,17 +1,17 @@
 {% extends 'index.html' %} {% block content %}
 
 <div class="border border-zinc-300 rounded h-full bg-zinc-50 relative">
-  <div class="py-40 px-12">
-    <div class="absolute top-0 left-12 bg-red-500 w-24 h-32"></div>
-    <div class="absolute bottom-0 left-12 bg-red-500 w-24 h-32"></div>
+  <div class="py-40 px-8 sm:px-12">
+    <div class="absolute top-0 left-8 sm:left-12 bg-red-500 w-24 h-32"></div>
+    <div class="absolute bottom-0 left-8 sm:left-12 bg-red-500 w-24 h-32"></div>
     <div class="space-y-6">
-      <ul class="flex gap-x-4 items-center">
+      <ul class="flex flex-col sm:flex-row gap-4 sm:items-center">
         <li class="text-red-500 font-semibold">Mental Health</li>
-        <li>
+        <li class="hidden sm:flex">
           <div class="bg-red-500 rounded-full h-4 w-4"></div>
         </li>
         <li class="text-red-500 font-semibold">Mortality</li>
-        <li>
+        <li class="hidden sm:flex">
           <div class="bg-red-500 rounded-full h-4 w-4"></div>
         </li>
         <li class="text-red-500 font-semibold">Awareness</li>
@@ -129,7 +129,7 @@
               interventions.
             </p>
           </div>
-          <div class="flex-none w-3/12">
+          <div class="flex-none sm:w-3/12">
             <p class="font-medium text-zinc-700">
               As based on the data, it becomes evident that mental health
               challenges are not just a personal struggle but a societal concern

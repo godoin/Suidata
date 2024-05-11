@@ -1,8 +1,8 @@
 {% extends 'index.html' %} {% block content%}
 <div class="mt-4 space-y-4">
   <div class="grid grid-cols-1 gap-4">
-    <div class="flex gap-x-4">
-      <div class="flex-none w-64 grid grid-cols-1 gap-4">
+    <div class="flex flex-col sm:flex-row gap-4">
+      <div class="flex-none sm:w-64 grid grid-cols-1 gap-4">
         <div class="flex items-center gap-x-4 shadow rounded p-4">
           <div class="bg-red-500 rounded-full h-16 w-16"></div>
           <div class="space-y-4">
@@ -42,9 +42,9 @@
           </div>
         </div>
       </div>
-      <div class="flex-1">{% include 'charts/line-chart.html' %}</div>
+      <div class="flex-1 w-full">{% include 'charts/line-chart.html' %}</div>
     </div>
-    <div class="flex gap-x-4">
+    <div class="flex flex-col sm:flex-row gap-4">
       <div class="flex-1">{% include 'charts/pie-chart.html' %}</div>
       <div class="flex-none w-[30em] bg-red-600 shadow rounded relative">
         <div class="h-full py-8 px-8 space-y-12">
@@ -70,7 +70,7 @@
           <img
             src="{{ url_for('static', filename='assets/images/mindfulness.svg') }}"
             alt=""
-            class="absolute bottom-10 right-10 w-72"
+            class="hidden sm:flex absolute bottom-10 right-10 w-72"
           />
         </div>
       </div>

@@ -80,7 +80,7 @@ def get_data():
 
   try:
     with connection.cursor() as cursor:
-      sql = "SELECT * FROM suicide_statistics_2 LIMIT 10"
+      sql = "SELECT * FROM suicide_statistics_2"
       cursor.execute(sql)
       data = cursor.fetchall()
   finally:  
@@ -90,7 +90,26 @@ def get_data():
 
 @views.route("/reports")
 def reports():
-  return render_template('reports.html', title_page="Reports", active="reports")
+  connection = utils.run_connection()
+  
+  try:
+    with connection.cursor() as cursor:
+      # Query to calculate sum of suicides based on gender and year
+      sql_gender_year = "SELECT year, sex, SUM(suicides_no) AS total_suicides FROM suicide_statistics_2 GROUP BY year, sex"
+      cursor.execute(sql_gender_year)
+      gender_year_data = cursor.fetchall()
+  finally:
+    connection.close()
+
+  # Extracting male and female total suicides
+  male_total_suicides = sum(row["total_suicides"] for row in gender_year_data if row["sex"] == "male")
+  female_total_suicides = sum(row["total_suicides"] for row in gender_year_data if row["sex"] == "female")
+    
+  # Formatting total suicides with commas and no decimal point
+  male_total_suicides_formatted = "{:,.0f}".format(male_total_suicides)
+  female_total_suicides_formatted = "{:,.0f}".format(female_total_suicides)
+  
+  return render_template('reports.html', title_page="Reports", active="reports", male_total_suicides=male_total_suicides_formatted, female_total_suicides=female_total_suicides_formatted)
 
 @views.route("/about")
 def about():

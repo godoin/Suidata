@@ -6,7 +6,7 @@
         <div class="flex items-center gap-x-4 shadow rounded p-4">
           <div class="bg-red-500 rounded-full h-16 w-16"></div>
           <div class="space-y-4">
-            <h1 class="text-xl font-medium text-red-500">
+            <h1 class="text-xl font-semibold text-red-500">
               {{ total_suicides }}
             </h1>
             <span class="text-sm text-zinc-700">Total Mortality</span>
@@ -15,7 +15,7 @@
         <div class="flex items-center gap-x-4 shadow rounded p-4">
           <div class="bg-red-500 rounded-full h-16 w-16"></div>
           <div class="space-y-4">
-            <h1 class="text-xl font-medium text-red-500">
+            <h1 class="text-xl font-semibold text-red-500">
               {{ most_suicides_country }}
             </h1>
             <span class="text-sm text-zinc-700">Most Mortality</span>
@@ -24,7 +24,7 @@
         <div class="flex items-center gap-x-4 shadow rounded p-4">
           <div class="bg-red-500 rounded-full h-16 w-16"></div>
           <div class="space-y-4">
-            <h1 class="text-2xl font-medium text-red-500">
+            <h1 class="text-2xl font-semibold text-red-500">
               {{ total_countries }}
             </h1>
             <span class="text-sm text-zinc-700">Total Countries</span>
@@ -33,10 +33,12 @@
         <div class="flex items-center gap-x-4 shadow rounded p-4">
           <div class="bg-red-500 rounded-full h-16 w-16"></div>
           <div class="space-y-4">
-            <h1 class="text-xl font-medium text-red-500">
-              {{ largest_population_country }}
+            <h1 class="text-xl font-semibold text-red-500">
+              {% if male_total_suicides > female_total_suicides %} Male {% elif
+              male_total_suicides < female_total_suicides %} Female {% else %}
+              Both genders {% endif %}
             </h1>
-            <span class="text-sm text-zinc-700">Largest Population</span>
+            <span class="text-sm text-zinc-700"> Most Mortality </span>
           </div>
         </div>
       </div>

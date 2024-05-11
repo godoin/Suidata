@@ -1,7 +1,7 @@
 const options = {
   series: [
     {
-      name: "Total Number of Suicides",
+      name: "Total Mortality Rate",
       color: "#EF4444",
       data: [
         { x: "Albania", y: 1970.0 },

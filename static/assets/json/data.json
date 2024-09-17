@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "name": "United Kingdom",
+        "imageUrl": "static/assets/images/flags/united_kingdom.png",
+        "year": 1979,
+        "sex": "Female",
+        "ageGroup": "15-24 Years",
+        "suicideCount": 119,
+        "population": 4189200
+    },
+    {
+        "id": 2,
+        "name": "Austria",
+        "imageUrl": "static/assets/images/flags/austria.png",
+        "year": 1979,
+        "sex": "Female",
+        "ageGroup": "15-24 Years",
+        "suicideCount": 518,
+        "population": 587800
+    },
+    {
+        "id": 3,
+        "name": "Hungary",
+        "imageUrl": "static/assets/images/flags/hungary.png",
+        "year": 1979,
+        "sex": "Female",
+        "ageGroup": "15-24 Years",
+        "suicideCount": 205,
+        "population": 732800
+    },
+    {
+        "id": 4,
+        "name": "Iceland",
+        "imageUrl": "static/assets/images/flags/iceland.png",
+        "year": 1979,
+        "sex": "Female",
+        "ageGroup": "15-24 Years",
+        "suicideCount": 325,
+        "population": 89200
+    },
+    {
+        "id": 5,
+        "name": "Israel",
+        "imageUrl": "static/assets/images/flags/israel.png",
+        "year": 1979,
+        "sex": "Female",
+        "ageGroup": "15-24 Years",
+        "suicideCount": 325,
+        "population": 4189200
+    }
+]
+

@@ -1,0 +1,129 @@
+/* Button */
+button,
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8em 1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0.6em;
+  white-space: nowrap;
+  gap: 0.4em;
+  font-weight: 500;
+  max-width: 12em;
+}
+
+button:hover,
+.button:hover {
+  background-color: var(--gray-300);
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.secondary {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+.tertiary {
+  background-color: var(--gray-100);
+  color: var(--gray-400);
+}
+
+.tertiary:hover {
+  background-color: var(--gray-200);
+  color: var(--gray-500);
+}
+
+.ghost {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  color: var(--black);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.ghost:hover {
+  background-color: var(--gray-200);
+}
+
+.icon {
+  position: relative;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.icon.like > i,
+.icon.like > .fa-heart {
+  color: var(--red-500);
+  font-size: 1.2em;
+}
+
+.icon:hover {
+  background-color: var(--gray-100);
+}
+
+.icon.like:hover {
+  background-color: transparent;
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--sky-500);
+  border: 1px solid var(--gray-300);
+  padding: 0.6em;
+}
+
+.outline:hover {
+  background-color: var(--gray-100);
+}
+.badge {
+  background-color: transparent;
+  border: 1px solid var(--black);
+  color: var(--black);
+  font-size: 0.8rem;
+}
+
+.badge-02 {
+  background-color: var(--sky-200);
+  border: 1px solid var(--sky-300);
+  border-radius: 0.3em;
+  color: var(--sky-700);
+  padding: 0.5em 1em;
+}
+
+.badge-02:hover {
+  background-color: var(--sky-200);
+}
+
+.badge:hover {
+  background-color: none;
+}
+
+.success {
+  background-color: var(--success);
+  color: var(--text);
+}
+
+.warning {
+  background-color: var(--warning);
+  color: var(--text);
+}
+
+.error {
+  background-color: var(--error);
+  color: var(--text);
+}
+
+.info {
+  background-color: var(--info);
+  color: var(--text);
+}

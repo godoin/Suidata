@@ -1,10 +1,7 @@
-console.log("Running scripts");
+import { setupToggleListeners } from "./shared/menuToggle.js";
+import { setupDataLoadingAndListeners } from "./data/data.js";
 
-document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    var modal = document.getElementById("toast-default");
-    if (modal) {
-      modal.classList.add("hidden");
-    }
-  }, 8000);
+document.addEventListener("DOMContentLoaded", () => {
+  setupToggleListeners();
+  setupDataLoadingAndListeners();
 });

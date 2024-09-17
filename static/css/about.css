@@ -1,0 +1,345 @@
+/* Global */
+.about-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-container > section {
+  padding: 2em 3em 2em 2em;
+  overflow: hidden;
+}
+
+@media (min-width: 728px) {
+  .about-container .title.main {
+    font-size: 4rem;
+  }
+
+  .about-container .title {
+    font-size: 2rem;
+  }
+
+  .about-container .hero .description {
+    font-size: 1.4rem;
+  }
+}
+
+/* Hero Section */
+.about-container .hero {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container .hero .wrapper {
+  overflow: hidden;
+  border-radius: 2.5em;
+  background-color: var(--sky-100);
+  width: 100%;
+  height: 100%;
+  aspect-ratio: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.about-container .hero .world-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.5;
+}
+
+.about-container .hero header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 60em;
+}
+
+.about-container .hero header .title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.about-container .hero .description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.about-container .hero .description p {
+  max-width: 50em;
+}
+
+/* About Section */
+.about-container .about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  gap: 2em;
+}
+
+.about-container .about .title,
+.about-container .about .description {
+  flex: 1;
+}
+
+.about-container .about .description {
+  font-size: 1rem;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+@media (min-width: 728px) {
+  .about-container .about {
+    flex-direction: row;
+  }
+}
+
+/* Scope Section */
+.about-container .scope {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.about-container .scope .left-img {
+  flex: 1;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.about-container .scope .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+@media (min-width: 728px) {
+  .about-container .scope {
+    flex-direction: row;
+  }
+}
+
+/* Mission Section */
+
+.about-container .mission {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.about-container .mission .title {
+  text-align: center;
+  max-width: 20em;
+}
+
+.about-container .mission .visual {
+  display: flex;
+  justify-content: end;
+}
+
+.about-container .mission .content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4em;
+  place-content: center;
+}
+
+.about-container .mission .content .column {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.4em;
+}
+
+.about-container .mission .card {
+  border-radius: 2.5em;
+  padding: 1.4em;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1em;
+  box-shadow: var(--shadow-md);
+}
+
+.about-container .mission .card.inform {
+  background-color: var(--gray-900);
+}
+
+.about-container .mission .card.inform .description {
+  color: var(--white);
+}
+
+.about-container .mission .card.inform .bold {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.about-container .mission .card.inspire {
+  background-color: var(--sky-200);
+}
+
+.about-container .mission .card.inspire .description {
+  color: var(--gray-700);
+}
+
+.about-container .mission .card.inspire .bold {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.about-container .mission .card.analyze {
+  background-color: var(--gray-100);
+}
+
+.about-container .mission .card.analyze .description {
+  color: var(--gray-700);
+}
+
+.about-container .mission .card.analyze .bold {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.about-container .mission .card.awareness {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: left;
+  background-color: var(--gray-50);
+}
+
+.about-container .mission .card.awareness .description {
+  color: var(--gray-700);
+  padding-top: 1.2em;
+  border-top: 1px solid var(--gray-500);
+  height: 15em;
+}
+
+.about-container .mission .card.awareness .bold {
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+@media (min-width: 728px) {
+  .about-container .mission .content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-container .mission .card {
+    max-width: 20em;
+    min-height: 18em;
+  }
+
+  .about-container .mission .content .column:last-child {
+    margin-top: 4em;
+  }
+
+  .about-container .missiom .card.awareness {
+    justify-content: center;
+  }
+}
+/* Features Section */
+
+.about-container .features {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.about-container .features .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.about-container .features .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.about-container .features .card .number {
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.about-container .features .card .description {
+  padding-top: 1em;
+  border-top: 1px solid var(--gray-500);
+  font-size: 1.1rem;
+  overflow: hidden;
+}
+
+@media (min-width: 728px) {
+  .about-container .features .content {
+    flex-direction: row;
+  }
+}
+
+/* CTA Section */
+.about-container .cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container .cta .wrapper {
+  padding: 2em;
+  background-color: var(--sky-100);
+  border-radius: 2.5em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 1.6em;
+}
+
+.about-container .cta .wrapper header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.about-container .cta .wrapper .description {
+  color: var(--gray-500);
+}
+
+.about-container .cta .wrapper .actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+@media (min-width: 728px) {
+  .about-container .cta .wrapper {
+    padding: 4.5em 4.5em;
+    justify-content: left;
+    text-align: left;
+  }
+
+  .about-container .cta .wrapper .actions {
+    justify-content: left;
+  }
+}

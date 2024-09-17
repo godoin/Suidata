@@ -1,0 +1,85 @@
+.map-container {
+  /* padding: 1em 2.2em 1em 1.2em; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  min-height: 100dvh;
+}
+
+.map-container #map {
+  height: 100vh;
+  z-index: 1;
+}
+
+/* Data Column */
+.data-column {
+  min-width: 15em;
+  padding: 0.8em;
+  background-color: var(--white);
+  border: 1px solid var(--gray-100);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.data-column h1,
+.data-column h2 {
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+.data-column h2 {
+  font-size: 0.8rem;
+}
+
+.data-column header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.data-column header .title {
+  font-size: 1rem;
+}
+
+.data-column header .value {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.data-column .content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.data-column .content section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.data-column .content section .group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.data-column .content section .group .detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-column .content section .group .detail span {
+  font-size: 0.8rem;
+  color: var(--gray-700);
+}
+
+.data-column .content section .group .bar {
+  min-height: 0.6em;
+  min-width: 100%;
+  background-color: var(--gray-300);
+}

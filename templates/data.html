@@ -1,141 +1,199 @@
-{% extends 'index.html' %} {% block content %}
+{% extends 'index.html' %} {% block content%}
 
-<div class="space-y-4 xl:max-w-9xl mx-auto">
-  <div class="bg-white p-4 rounded border border-zinc-300">
-    <label for="table-search" class="sr-only">Search</label>
-    <div class="relative mt-1">
-      <div
-        class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
-      >
-        <svg
-          class="w-4 h-4 text-gray-500 dark:text-gray-400"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 20 20"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-          />
-        </svg>
+<div class="data-column">
+  <header>
+    <h1 class="title">Suicide Count</h1>
+    <span class="value">1,175,258</span>
+  </header>
+  <div class="content">
+    <section class="sex">
+      <h2>Sex</h2>
+      <div class="group">
+        <div class="detail">
+          <span class="name">Male</span>
+          <span class="value">788,093</span>
+        </div>
+        <div class="bar" id="male"></div>
       </div>
-      <input
-        type="text"
-        id="table-search"
-        class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500"
-        placeholder="Search for items"
-      />
-    </div>
+      <div class="group">
+        <div class="detail">
+          <span class="name">Female</span>
+          <span class="value">388,195</span>
+        </div>
+        <div class="bar" id="female"></div>
+      </div>
+    </section>
+    <section class="age">
+      <h2>Age Groups</h2>
+      <div class="group">
+        <div class="detail">
+          <span class="name">5-14 Years</span>
+          <span class="value">130,695</span>
+        </div>
+        <div class="bar" id="5-14years"></div>
+      </div>
+      <div class="group">
+        <div class="detail">
+          <span class="name">15-24 Years</span>
+          <span class="value">392,087</span>
+        </div>
+        <div class="bar" id="15-24years"></div>
+      </div>
+      <div class="group">
+        <div class="detail">
+          <span class="name">25-34 Years</span>
+          <span class="value">261,390</span>
+        </div>
+        <div class="bar" id="25-34years"></div>
+      </div>
+      <div class="group">
+        <div class="detail">
+          <span class="name">35-54 Years</span>
+          <span class="value">261,390</span>
+        </div>
+        <div class="bar" id="35-54years"></div>
+      </div>
+      <div class="group">
+        <div class="detail">
+          <span class="name">75+years</span>
+          <span class="value">130,695</span>
+        </div>
+        <div class="bar" id="75years"></div>
+      </div>
+    </section>
   </div>
-  <div class="p-4 border border-zinc-300 rounded-md">
-    <div class="w-full flex-1 relative overflow-x-auto">
-      <table class="w-full text-sm text-left rtl:text-right text-gray-500 p-4">
-        <thead class="text-xs text-zinc-700 bg-gray-300">
-          <tr class="">
-            <th scope="col" class="p-6">Country</th>
-            <th scope="col" class="p-6">Year</th>
-            <th scope="col" class="p-6">Sex</th>
-            <th scope="col" class="p-6">Age</th>
-            <th scope="col" class="p-6">Suicide No.</th>
-            <th scope="col" class="p-6">Population</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% if data %} {% for row in data %}
-          <tr
-            class="bg-white border dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <td class="px-6 py-4">{{ row.country}}</td>
-            <td class="px-6 py-4">{{ row.year }}</td>
-            <td class="px-6 py-4">{{ row.sex }}</td>
-            <td class="px-6 py-4">{{ row.age }}</td>
-            <td class="px-6 py-4">{{ row.suicides_no }}</td>
-            <td class="px-6 py-4">{{ row.population }}</td>
-          </tr>
-          {% endfor %} {% else %}
-          <tr>
-            <td
-              colspan="6"
-              class="text-center py-4 text-gray-500 dark:text-white"
-            >
-              No Results
-            </td>
-          </tr>
-          {% endif %}
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <nav
-    class="flex items-center flex-column flex-wrap md:flex-row justify-between p-4 border border-zinc-300 rounded-md"
-    aria-label="Table navigation"
-  >
-    <span
-      class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto"
-      >Showing
-      <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of
-      <span class="font-semibold text-gray-900 dark:text-white"
-        >1000</span
-      ></span
-    >
-    <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-      <li>
-        <a
-          href="#"
-          class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >Previous</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >1</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >2</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          aria-current="page"
-          class="flex items-center justify-center px-3 h-8 text-orange-600 border border-gray-300 bg-orange-50 hover:bg-orange-100 hover:text-orange-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-          >3</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >4</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >5</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >Next</a
-        >
-      </li>
-    </ul>
-  </nav>
 </div>
+<main class="data-container">
+  <header>
+    <div class="left-content">
+      <h1>WHO Suicide Statistics 1979-2016</h1>
+      <p class="description">
+        Aggregated from Kaggle, this dataset includes global suicide statistics
+        reported by the WHO from 1979 to 2016.
+      </p>
+    </div>
+  </header>
+  <div class="content">
+    <div class="filters-container">
+      <div class="search-container" id="search-container">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search..."
+          id="search-input"
+        />
+      </div>
+      <div class="actions">
+        <button class="outline">Export</button>
+      </div>
+    </div>
+    <table class="table-container" id="table-data">
+      <thead id="table-header">
+        <tr>
+          <th class="header" scope="col" id="name">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/flag.svg"
+                alt="Country flag"
+              />
+              <p class="title">Country</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="year">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/clock.svg"
+                alt="Clock icon"
+              />
+              <p class="title">Year</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="sex">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">Sex</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="age">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">Age Group</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="mortality">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/heart.svg"
+                alt="Heart icon"
+              />
+              <p class="title">Suicide Count</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="population">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">Population</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr class="row-data">
+          <td class="data">
+            <div class="group">
+              <img src="static/assets/images/flags/united_kingdom.png" alt="" />
+              United Kingdom
+            </div>
+          </td>
+          <td class="data">1979</td>
+          <td class="data">Female</td>
+          <td class="data">15-24 Years</td>
+          <td class="data">119</td>
+          <td class="data">4189200</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <div class="actions">
+      <button id="prev-button">Previous</button>
+      <button id="next-button">Next</button>
+    </div>
+  </div>
+</main>
 
 {% endblock %}

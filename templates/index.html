@@ -4,47 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title_page }}</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/output.css') }}"
-    />
-    <link
+    <!-- <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
       rel="stylesheet"
-    />
+    /> -->
     <link
       rel="icon"
-      href="{{ url_for('static', filename='assets/images/ribbon.svg') }}"
+      href="{{ url_for('static', filename='assets/images/logo.png') }}"
       type="image/x-icon"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/common.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/layouts.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/map.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/about.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/data.css') }}"
+    />
+
     <script
       src="https://kit.fontawesome.com/84e2199ce0.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
   </head>
   <body>
-    <div class="relative">
-      <div class="fixed top-0 left-0 w-screen bg-white z-50">
-        {% include 'layouts/navbar.html' %}
-      </div>
-
-      <div class="mt-16">
-        <div class="h-[calc(100vh)] flex flex-col">
-          <main class="flex-1 p-4 py-5">
-            {% block content %} {% endblock %}
-            <!-- {% include 'loading/intro.html' %} -->
-            {% include 'components/toast.html' %}
-          </main>
-          <div class="flex-none">{% include 'layouts/footer.html' %}</div>
-        </div>
-      </div>
+    <div class="container">
+      {% include 'layouts/navbar.html' %} {% block content %} {% endblock %} {%
+      include 'layouts/footer.html' %}
     </div>
-    <script src="{{ url_for('static', filename='scripts/bar-chart.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/line-chart.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/pie-chart.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
-    <!-- <script src="{{ url_for('static', filename='scripts/column-chart.js') }}"></script> -->
+
+    <script
+      src="{{ url_for('static', filename='scripts/index.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/shared/eventHandlers.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/shared/menuToggle.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/data/data.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/shared/apiUtils.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/data/filters.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/map/map.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/map/mapUtils.js') }}"
+      type="module"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,130 @@
+/* Global */
+.data-container {
+  padding: 1em 2.2em 1em 1.2em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  min-height: 100dvh;
+}
+
+/* Header */
+.data-container header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-container header .left-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.data-container header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.data-container header .description {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+/* Table */
+.data-container .content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4em;
+}
+
+.data-container .filters-container {
+  min-width: 24em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-container .filters-container #search-input {
+  padding: 0.4em 0.8em;
+  border-radius: 0.2em;
+  border: 1px solid var(--gray-300);
+}
+
+.data-container .filters-container #search-input:focus-visible {
+  border: 2px solid var(--sky-500);
+  outline: none;
+}
+
+/* Table */
+.data-container table {
+  border-collapse: collapse;
+  border-spacing: 1px;
+  border-color: var(--gray-300);
+  width: 100%;
+  border: 1px solid var(--gray-300);
+  border-top: 0;
+  border-radius: 0.4em;
+  height: calc(100vh - 16em);
+}
+
+.data-container table tr {
+  width: 100%;
+  display: flex;
+}
+
+.data-container table th,
+.data-container table td {
+  text-align: left;
+  padding: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 10em;
+}
+
+.data-container table th {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--gray-300);
+  border-right: 0;
+}
+
+.data-container table th:first-child {
+  border-left: 0;
+}
+
+.data-container table th:hover {
+  background-color: var(--gray-50);
+}
+
+.data-container table td {
+  border-bottom: 1px solid var(--gray-300);
+  padding: 1em 0.5em;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.data-container .group {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.data-container table tr:nth-child(even) {
+  background-color: var(--gray-100);
+}
+
+.data-container .pagination {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.data-container .actions {
+  display: flex;
+  gap: 0.4em;
+}
+
+/* Table Header */

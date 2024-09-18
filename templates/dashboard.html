@@ -1,5 +1,151 @@
 {% extends 'index.html' %} {% block content%}
 
-<main class="dashboard-container"></main>
+<main class="dashboard-container">
+  <header>
+    <h1 class="title">Dashboard</h1>
+    <div class="actions">
+      <button class="primary">Download Report</button>
+    </div>
+  </header>
+  <div class="content">
+    <div class="left-content">
+      <div class="summary">
+        <header>
+          <h2 class="name">Highest Mortality Rates Per Category</h2>
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </header>
+        <div class="bottom">
+          <div class="data-row" id="data-row">
+            <div class="column" id="year-column">
+              <span class="number">1,117,800</span>
+              <div class="group">
+                <i class="fa-regular fa-clock"></i>
+                <span class="value">1980</span>
+              </div>
+            </div>
+            <div class="column" id="sex-column">
+              <span class="number">755,240</span>
+              <div class="group">
+                <i class="fa-solid fa-venus-mars"></i>
+                <span class="value">Males</span>
+              </div>
+            </div>
+            <div class="column" id="age-column">
+              <span class="number">377,188</span>
+              <div class="group">
+                <i class="fa-thin fa-users"></i>
+                <span class="value">15-24 years</span>
+              </div>
+            </div>
+            <div class="column" id="country-column">
+              <span class="number">252,123</span>
+              <div class="group">
+                <i class="fa-regular fa-flag"></i>
+                <span class="value">Brazil</span>
+              </div>
+            </div>
+          </div>
+          <div class="filter">
+            <span class="name">All Countries</span>
+            <span class="title">Selected Countries</span>
+          </div>
+        </div>
+      </div>
+      <div class="row-graphs">
+        <div id="sex-chart"></div>
+        <div id="age-chart"></div>
+      </div>
+      <div class="row-graphs">
+        <div id="line-chart"></div>
+      </div>
+    </div>
+    <div class="right-content">
+      <header>
+        <i class="fa-regular fa-circle-question"></i>
+        <span class="title">Click to Modify</span>
+      </header>
+      <div class="map-wrapper">
+          <div id="dashboardMap"></div>
+      </div>
+      <header>
+        <h2 class="title">Highest Mortality Rates: Top 8 Countries</h2>
+      </header>
+      <div class="bar-graphs" id="mortality-countries">
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+        <div class="group">
+          <div class="detail">
+              <span class="name">Brazil</span>
+              <span class="value">1576203</span>
+          </div>
+          <div class="bar" id="">
+              <div class="percentage"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 {% endblock %}

@@ -7,6 +7,7 @@ def preprocess_suicide_data(input_file, output_file):
     """
     Preprocesses suicide data from the original format to the new format, 
     including a year-wise breakdown and a row for the total across all years.
+    Adds a total_mortality column summing male and female suicides.
 
     Args:
         input_file (str): Path to the original CSV file.
@@ -38,8 +39,11 @@ def preprocess_suicide_data(input_file, output_file):
     df_final = df_final.rename(columns={'country': 'name'})
     df_final = df_final[['name', 'year', 'male', 'female', '5-14 years', '15-24 years', '25-34 years', '35-54 years', '55-74 years', '75+ years']]
 
+    # Add a column 'total_mortality' summing 'male' and 'female'
+    df_final['total_mortality'] = df_final['male'] + df_final['female']
+
     # Filter for years 1996 to 2016
-    df_filtered = df_final[df_final['year'].between(1996, 2016)]
+    df_filtered = df_final[df_final['year'].between(1985, 2016)]
 
     # Calculate the totals for "All" years (1996-2016) for each country
     df_total = df_filtered.groupby('name').sum(numeric_only=True).reset_index()

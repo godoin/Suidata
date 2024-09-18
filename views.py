@@ -14,16 +14,12 @@ def dashboard():
 
 @views.route("/data")
 def get_data():
-  # connection = utils.run_connection();
-
   return render_template('data.html', title_page="Data", active="data")
 
 @views.route("/map")
 def reports():
-  # connection = utils.run_connection()
-  
   return render_template('map.html', title_page="Map", active="map")
 
 @views.route("/dashboard")
 def about():
-  return render_template('dashobard.html', title_page="Dashboard")
+  return render_template('dashboard.html', title_page="Dashboard")

@@ -4,24 +4,64 @@
   display: flex;
   flex-direction: column;
   gap: 2em;
-  min-height: 100dvh;
+  position: relative;
+  /* max-height: 100vh; */
 }
 
 .map-container #map {
-  height: 100vh;
+  min-height: 100vh;
   z-index: 1;
 }
 
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+/* Slider */
+.silder-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-width: 100%;
+  margin: 1em 5em;
+  display: flex;
+}
+
+#year-slider {
+  flex: 1;
+  min-width:100%
+}
+
+
 /* Data Column */
 .data-column {
-  min-width: 15em;
+  min-width: 14em;
   padding: 0.8em;
-  background-color: var(--white);
+  background: rgba(255,255,255,0.8);
   border: 1px solid var(--gray-100);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: 0.6em;
+  border-radius: 0.4em;
 }
 
 .data-column h1,
@@ -80,6 +120,11 @@
 
 .data-column .content section .group .bar {
   min-height: 0.6em;
+  background-color: var(--gray-200);
   min-width: 100%;
-  background-color: var(--gray-300);
+}
+
+.data-column .content section .group .bar .percentage {
+  min-height: inherit;
+  background-color: var(--sky-400);
 }

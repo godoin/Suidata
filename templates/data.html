@@ -1,68 +1,6 @@
 {% extends 'index.html' %} {% block content%}
 
-<div class="data-column">
-  <header>
-    <h1 class="title">Suicide Count</h1>
-    <span class="value">1,175,258</span>
-  </header>
-  <div class="content">
-    <section class="sex">
-      <h2>Sex</h2>
-      <div class="group">
-        <div class="detail">
-          <span class="name">Male</span>
-          <span class="value">788,093</span>
-        </div>
-        <div class="bar" id="male"></div>
-      </div>
-      <div class="group">
-        <div class="detail">
-          <span class="name">Female</span>
-          <span class="value">388,195</span>
-        </div>
-        <div class="bar" id="female"></div>
-      </div>
-    </section>
-    <section class="age">
-      <h2>Age Groups</h2>
-      <div class="group">
-        <div class="detail">
-          <span class="name">5-14 Years</span>
-          <span class="value">130,695</span>
-        </div>
-        <div class="bar" id="5-14years"></div>
-      </div>
-      <div class="group">
-        <div class="detail">
-          <span class="name">15-24 Years</span>
-          <span class="value">392,087</span>
-        </div>
-        <div class="bar" id="15-24years"></div>
-      </div>
-      <div class="group">
-        <div class="detail">
-          <span class="name">25-34 Years</span>
-          <span class="value">261,390</span>
-        </div>
-        <div class="bar" id="25-34years"></div>
-      </div>
-      <div class="group">
-        <div class="detail">
-          <span class="name">35-54 Years</span>
-          <span class="value">261,390</span>
-        </div>
-        <div class="bar" id="35-54years"></div>
-      </div>
-      <div class="group">
-        <div class="detail">
-          <span class="name">75+years</span>
-          <span class="value">130,695</span>
-        </div>
-        <div class="bar" id="75years"></div>
-      </div>
-    </section>
-  </div>
-</div>
+
 <main class="data-container">
   <header>
     <div class="left-content">
@@ -116,52 +54,104 @@
               alt="Sort"
             />
           </th>
-          <th class="header" scope="col" id="sex">
+          <th class="header" scope="col" id="male">
             <div class="group">
               <img
                 src="static/assets/images/icons/group.svg"
                 alt="Group icon"
               />
-              <p class="title">Sex</p>
+              <p class="title">Male</p>
             </div>
             <img
               src="static/assets/images/icons/chevron-selector-vertical.svg"
               alt="Sort"
             />
           </th>
-          <th class="header" scope="col" id="age">
+          <th class="header" scope="col" id="female">
             <div class="group">
               <img
                 src="static/assets/images/icons/group.svg"
                 alt="Group icon"
               />
-              <p class="title">Age Group</p>
+              <p class="title">Female</p>
             </div>
             <img
               src="static/assets/images/icons/chevron-selector-vertical.svg"
               alt="Sort"
             />
           </th>
-          <th class="header" scope="col" id="mortality">
+          <th class="header" scope="col" id="5-14 years">
             <div class="group">
               <img
-                src="static/assets/images/icons/heart.svg"
-                alt="Heart icon"
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
               />
-              <p class="title">Suicide Count</p>
+              <p class="title">5-14 Years</p>
             </div>
             <img
               src="static/assets/images/icons/chevron-selector-vertical.svg"
               alt="Sort"
             />
           </th>
-          <th class="header" scope="col" id="population">
+          <th class="header" scope="col" id="15-24 years">
             <div class="group">
               <img
                 src="static/assets/images/icons/group.svg"
                 alt="Group icon"
               />
-              <p class="title">Population</p>
+              <p class="title">15-24 Years</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="25-34 years">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">25-34 Years</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="35-54 years">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">35-54 Years</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="55-74 years">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">55-74 Years</p>
+            </div>
+            <img
+              src="static/assets/images/icons/chevron-selector-vertical.svg"
+              alt="Sort"
+            />
+          </th>
+          <th class="header" scope="col" id="75+ years">
+            <div class="group">
+              <img
+                src="static/assets/images/icons/group.svg"
+                alt="Group icon"
+              />
+              <p class="title">75+ Years</p>
             </div>
             <img
               src="static/assets/images/icons/chevron-selector-vertical.svg"
@@ -178,11 +168,15 @@
               United Kingdom
             </div>
           </td>
-          <td class="data">1979</td>
-          <td class="data">Female</td>
-          <td class="data">15-24 Years</td>
-          <td class="data">119</td>
-          <td class="data">4189200</td>
+          <td class="data">All</td>
+          <td class="data">66446</td>
+          <td class="data">19514</td>
+          <td class="data">168</td>
+          <td class="data">8674</td>
+          <td class="data">16384</td>
+          <td class="data">36444</td>
+          <td class="data">17822</td>
+          <td class="data">6504</td>
         </tr>
       </tbody>
     </table>

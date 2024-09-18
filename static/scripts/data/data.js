@@ -20,15 +20,19 @@ const createTableDataElement = (country) => {
   const html = `
     <td class="data">
       <div class="group">
-        <img src="${country.imageUrl}" alt="${country.name}" />
+        <img src="" alt="${country.name}" />
           ${country.name}
       </div>
     </td>
     <td class="data">${country.year}</td>
-    <td class="data">${country.sex}</td>
-    <td class="data">${country.ageGroup}</td>
-    <td class="data">${country.suicideCount}</td>
-    <td class="data">${country.population}</td>
+    <td class="data">${country.male}</td>
+    <td class="data">${country.female}</td>
+    <td class="data">${country.age_group_5_to_14}</td>
+    <td class="data">${country.age_group_15_to_24}</td>
+    <td class="data">${country.age_group_25_to_34}</td>
+    <td class="data">${country.age_group_35_to_54}</td>
+    <td class="data">${country.age_group_55_to_74}</td>
+    <td class="data">${country.age_group_75_plus}</td>
   `;
 
   newRowData.innerHTML = html;
@@ -38,7 +42,7 @@ const createTableDataElement = (country) => {
 
 const loadCountryData = (data, tableBodyId, page = 1) => {
   const tableBody = document.getElementById(tableBodyId);
-  const tableContainer = tableBody.closest(`.table-container`);
+  const tableContainer = tableBody?.closest(`.table-container`);
 
   if (!tableContainer) {
     console.error("Error the table container is not found...");
@@ -105,12 +109,17 @@ const handleSearch = (event) => {
     .value.toLowerCase();
 
   const filteredCountries = allCountries.filter(
-    (book) =>
-      book.name.toLowerCase().includes(searchTerm) ||
-      book.year.toString().includes(searchTerm) ||
-      book.sex.toLowerCase().includes(searchTerm) ||
-      book.ageGroup.toLowerCase().includes(searchTerm) ||
-      book.suicideCount.toString().includes(searchTerm)
+    (data) =>
+      data.name?.toLowerCase().includes(searchTerm) ||
+      data.year?.toString().includes(searchTerm) ||
+      data.male?.toString().includes(searchTerm) ||
+      data.female?.toString().includes(searchTerm) ||
+      data.age_group_5_to_14?.toString().includes(searchTerm) || 
+      data.age_group_15_to_24?.toString().includes(searchTerm) ||
+      data.age_group_25_to_34?.toString().includes(searchTerm) ||
+      data.age_group_35_to_54?.toString().includes(searchTerm) ||
+      data.age_group_55_to_74?.toString().includes(searchTerm) ||
+      data.age_group_75_plus?.toString().includes(searchTerm)
   );
 
   loadCountryData(filteredCountries, "table-body");

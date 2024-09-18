@@ -41,6 +41,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/data.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
+    />
 
     <script
       src="https://kit.fontawesome.com/84e2199ce0.js"
@@ -57,6 +61,7 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
   <body>
     <div class="container">
@@ -64,6 +69,7 @@
       include 'layouts/footer.html' %}
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script
       src="{{ url_for('static', filename='scripts/index.js') }}"
       type="module"
@@ -96,6 +102,13 @@
       src="{{ url_for('static', filename='scripts/map/mapUtils.js') }}"
       type="module"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script
+      src="{{ url_for('static', filename='scripts/dashboard/dashboard.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/charts/line-chart.js') }}"
+      type="module"
+    ></script>
   </body>
 </html>

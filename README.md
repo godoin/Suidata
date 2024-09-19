@@ -6,7 +6,7 @@ A final data visualization project in fulfillment for the requirements of COMPSC
 
 ## Installation
 
-- Please download specifically Python v3.9.0 (for some reason higher version have errors)
+- Please download specifically Python v3.8.0
 - Open your terminal and clone this repository using `git clone https://github.com/godoin/StableEye` or `gh repo clone godoin/StableEye`
 - Create virtual environment (optional):
   - use `python3 -m venv .venv`
@@ -18,7 +18,6 @@ A final data visualization project in fulfillment for the requirements of COMPSC
 - Install the required libraries: `pip install -r requirements.txt`
 - Run the program:
   - to host use `python app.py`
-  - for css use: `npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch`
 
 ## Dataset
 

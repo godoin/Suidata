@@ -9,7 +9,7 @@
 }
 
 .map-container #map {
-  min-height: 100vh;
+  min-height: calc(100vh - 5.5em);
   z-index: 1;
 }
 

@@ -4,7 +4,13 @@
   <header>
     <h1 class="title">Dashboard</h1>
     <div class="actions">
-      <button class="primary">Download Report</button>
+      <select
+        id="yearSelect"
+        class="button outline"
+        aria-label="Select a year between 1979 and 2006"
+      >
+        <option value="" checked>Select Year</option>
+      </select>
     </div>
   </header>
   <div class="content">
@@ -33,7 +39,7 @@
             <div class="column" id="age-column">
               <span class="number">377,188</span>
               <div class="group">
-                <i class="fa-thin fa-users"></i>
+                <i class="fa-solid fa-users"></i>
                 <span class="value">15-24 years</span>
               </div>
             </div>
@@ -51,12 +57,37 @@
           </div>
         </div>
       </div>
-      <div class="row-graphs">
-        <div id="sex-chart"></div>
-        <div id="age-chart"></div>
+      <div class="row-graphs donut">
+        <div class="wrapper" id="sex-donut">
+          <header>
+            <div class="group">
+              <span class="title-group">Sex</span>
+              <span class="title">Total Sex Distribution</span>
+            </div>
+            <i class="fa-solid fa-venus-mars"></i>
+          </header>
+          <div id="sex-chart"></div>
+        </div>
+        <div class="wrapper" id="age-donut">
+          <header>
+            <div class="group">
+              <span class="title-group">Age Groups</span>
+              <span class="title">Total Age Distribution</span>
+            </div>
+            <i class="fa-solid fa-venus-mars"></i>
+          </header>
+          <div id="age-chart"></div>
+        </div>
       </div>
       <div class="row-graphs">
-        <div id="line-chart"></div>
+        <div class="wrapper">
+          <header>
+            <div class="group">
+              <span class="single-title">Total Age Distribution</span>
+            </div>
+          </header>
+          <div id="line-chart"></div>
+        </div>
       </div>
     </div>
     <div class="right-content">
@@ -65,82 +96,82 @@
         <span class="title">Click to Modify</span>
       </header>
       <div class="map-wrapper">
-          <div id="dashboardMap"></div>
+        <div id="dashboardMap"></div>
       </div>
       <header>
-        <h2 class="title">Highest Mortality Rates: Top 8 Countries</h2>
+        <h2 class="title">Highest Mortality Rates: Top 10 Countries</h2>
       </header>
       <div class="bar-graphs" id="mortality-countries">
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
         <div class="group">
           <div class="detail">
-              <span class="name">Brazil</span>
-              <span class="value">1576203</span>
+            <span class="name">Brazil</span>
+            <span class="value">1576203</span>
           </div>
           <div class="bar" id="">
-              <div class="percentage"></div>
+            <div class="percentage"></div>
           </div>
         </div>
       </div>

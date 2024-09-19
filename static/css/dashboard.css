@@ -56,15 +56,107 @@
 }
 
 /* Left Content */
-.dashboard-container .content .left-content .summary,
-.dashboard-container .content .left-content .row-graphs {
+.dashboard-container .content .left-content .summary {
   padding: 1em;
   border-radius: 0.6em;
   border: 1px solid var(--gray-300);
 }
 
-.dashboard-container .content .left-content .row-graphs  {
-  padding: 1em 0.5em;
+.dashboard-container .content .left-content .row-graphs .wrapper {
+  /* min-height: 28em; */
+  min-width: 100%;
+  flex: 1;
+  padding: 1em;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.dashboard-container .content .left-content .row-graphs .wrapper header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.dashboard-container .content .left-content .row-graphs .wrapper header .group {
+  display: flex;
+  flex-direction: column;
+  gap: 0em;
+  line-height: 2em;
+}
+
+.dashboard-container .content .left-content .row-graphs .wrapper header i {
+  font-size: 2rem;
+  color: var(--gray-700);
+  padding-top: 0.4em;
+}
+
+.dashboard-container
+  .content
+  .left-content
+  .row-graphs
+  .wrapper
+  header
+  .total-number {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.dashboard-container
+  .content
+  .left-content
+  .row-graphs
+  .wrapper
+  header
+  .title-group,
+.dashboard-container
+  .content
+  .left-content
+  .row-graphs
+  .wrapper
+  header
+  .single-title {
+  font-size: 1.2rem;
+  color: var(--gray-700);
+  font-weight: 700;
+}
+
+.dashboard-container .content .left-content .row-graphs .wrapper header .title {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--gray-500);
+}
+
+@media (min-width: 728px) {
+  .dashboard-container .content .left-content .row-graphs .wrapper {
+    min-height: 28em;
+  }
+}
+
+@media (min-width: 1220px) {
+  .dashboard-container .content .left-content .row-graphs .wrapper {
+    min-width: 0;
+  }
+}
+
+/* Donut Chart */
+.dashboard-container .content .left-content .row-graphs.donut {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  border: 0;
+  padding: 0;
+}
+
+@media (min-width: 1220px) {
+  .dashboard-container .content .left-content .row-graphs.donut {
+    flex-direction: row;
+  }
 }
 
 .dashboard-container .summary {
@@ -106,7 +198,7 @@
 .dashboard-container .summary .bottom .data-row .column .number {
   font-size: 2rem;
   color: var(--gray-700);
-  font-weight: 700;
+  font-weight: 600;
 }
 .dashboard-container .summary .bottom .data-row .column .group {
   display: flex;
@@ -140,14 +232,15 @@
 
 /* Row Graphs */
 .dashboard-container #line-chart {
-  min-height: 100%;
+  height: 100%;
+  min-height: 28em;
 }
 
 @media (min-width: 528px) {
   .dashboard-container .summary .bottom .data-row .column .number {
     font-size: 1.8rem;
   }
-  
+
   .dashboard-container .summary .bottom .data-row {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -157,11 +250,17 @@
   .dashboard-container .summary .bottom .data-row .column .number {
     font-size: 2rem;
   }
+
+  .dashboard-container .summary .bottom .data-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
   .dashboard-container .summary .bottom .data-row {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
 /* Right Content */
 .dashboard-container .content .right-content header {
   display: flex;
@@ -180,7 +279,7 @@
   overflow: hidden;
 }
 
-.dashboard-container .content .right-content .map-wrapper #dashboardMap{
+.dashboard-container .content .right-content .map-wrapper #dashboardMap {
   width: 100%;
   min-height: inherit;
   z-index: 1;
@@ -214,10 +313,45 @@
   min-height: 1em;
   background-color: var(--gray-200);
   min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2em;
 }
 
-.dashboard-container .content .right-content .bar-graphs .group .bar .percentage {
+.dashboard-container .content .right-content .bar-graphs .group .value-group {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.dashboard-container
+  .content
+  .right-content
+  .bar-graphs
+  .group
+  .value-group
+  .value {
+  font-size: 0.8rem;
+}
+
+.dashboard-container
+  .content
+  .right-content
+  .bar-graphs
+  .group
+  .bar
+  .percentage-display {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.dashboard-container
+  .content
+  .right-content
+  .bar-graphs
+  .group
+  .bar
+  .percentage {
   min-height: inherit;
   background-color: var(--sky-400);
 }
-

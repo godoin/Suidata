@@ -10,9 +10,14 @@ const ageGroups = [
   { key: "age_group_75_plus", label: "75+ years" },
 ];
 
-export const getHighestMortalityPerAgeGroup = (data) => {
+export const getHighestMortalityPerAgeGroup = (data, year) => {
+  console.log(`Check output age: ${year}`);
   return data
-    .filter((country) => country.name === "All" && country.year === "All")
+    .filter(
+      (country) =>
+        country.name === "All" &&
+        (year ? country.year === year : country.year === "All")
+    )
     .map((country) =>
       ageGroups.map((group) => ({
         age: group.label,
@@ -27,33 +32,59 @@ export const getHighestMortalityPerAgeGroup = (data) => {
     );
 };
 
-export const getHighestMortalityPerYear = (data) => {
+export const getHighestMortalityPerCountry = (data, year) => {
+  console.log(`Check output country: ${year}`);
   return data
-    .filter((country) => country.name === "All" && country.year !== "All")
-    .reduce((highest, current) =>
-      current.total_mortality > highest.total_mortality ? current : highest
+    .filter(
+      (country) =>
+        country.name !== "All" &&
+        (year ? country.year === year : country.year === "All")
+    )
+    .reduce(
+      (highest, current) =>
+        current.total_mortality > highest.total_mortality ? current : highest,
+      { name: "", total_mortality: 0 }
     );
 };
 
-export const getHighestMortalityPerCountry = (data) => {
+export const getHighestMortalityPerYear = (data, year) => {
+  console.log(`Check output yeare: ${year}`);
   return data
-    .filter((country) => country.name !== "All" && country.year === "All")
-    .reduce((highest, current) =>
-      current.total_mortality > highest.total_mortality ? current : highest
+    .filter(
+      (country) =>
+        country.name === "All" &&
+        (year ? country.year === year : country.year === "All")
+    )
+    .reduce(
+      (highest, current) =>
+        current.total_mortality > highest.total_mortality ? current : highest,
+      { year: "", total_mortality: 0 }
     );
 };
 
-export const getHighestMortalityPerSex = (data) => {
+export const getHighestMortalityPerSex = (data, year) => {
+  console.log(`Check output sex: ${year}`);
   const mortalityCountMale = data
-    .filter((country) => country.name === "All" && country.year === "All")
-    .reduce((highest, current) =>
-      current.male > highest.male ? current : highest
+    .filter(
+      (country) =>
+        country.name === "All" &&
+        (year ? country.year === year : country.year === "All")
+    )
+    .reduce(
+      (highest, current) => (current.male > highest.male ? current : highest),
+      { male: 0 }
     );
 
   const mortalityCountFemale = data
-    .filter((country) => country.name === "All" && country.year === "All")
-    .reduce((highest, current) =>
-      current.female > highest.female ? current : highest
+    .filter(
+      (country) =>
+        country.name === "All" &&
+        (year ? country.year === year : country.year === "All")
+    )
+    .reduce(
+      (highest, current) =>
+        current.female > highest.female ? current : highest,
+      { female: 0 }
     );
 
   return mortalityCountMale.male > mortalityCountFemale.female

@@ -3,6 +3,10 @@
  */
 
 import {
+  attachChangeHandlerById,
+  attachInputHandlerById,
+} from "../shared/eventHandlers.js";
+import {
   createOptionsBySex,
   createOptionsByAge,
   createOptionsByMortalityByYear,
@@ -23,22 +27,42 @@ let dashboardMap = L.map("dashboardMap", {
 });
 let dashboardTiles;
 let dashboardInfo = L.control();
-let selectedDashYear = "All";
+let selectedDashYear = "";
 
 const getSummaryDetails = async (dataJsonUrl) => {
   const data = await fetch(dataJsonUrl)
     .then((res) => res.json())
     .catch((err) => console.error(`Error fetching data: ${err}`));
 
-  const highestMortalityPerYear = getHighestMortalityPerYear(data);
-  const highestMortalityPerCountry = getHighestMortalityPerCountry(data);
-  const highestMortalityPerSex = getHighestMortalityPerSex(data);
-  const highestMortalityPerAgeGroup = getHighestMortalityPerAgeGroup(data);
+  const highestMortalityPerYear = getHighestMortalityPerYear(
+    data,
+    selectedDashYear
+  );
+  const highestMortalityPerCountry = getHighestMortalityPerCountry(
+    data,
+    selectedDashYear
+  );
+  const highestMortalityPerSex = getHighestMortalityPerSex(
+    data,
+    selectedDashYear
+  );
+  const highestMortalityPerAgeGroup = getHighestMortalityPerAgeGroup(
+    data,
+    selectedDashYear
+  );
 
-  // console.log(`Mortality Per Year: ${highestMortalityPerYear.year} ~ ${highestMortalityPerYear.total_mortality}`);
-  // console.log(`Mortality Per Country: ${highestMortalityPerCountry.name} ~ ${highestMortalityPerCountry.total_mortality}`);
-  // console.log(`Mortality Per Sex: ${highestMortalityPerSex.sex} ~ ${highestMortalityPerSex.mortality}`);
-  // console.log(`Mortality Per Ages: ${highestMortalityPerAgeGroup.sex} ~ ${highestMortalityPerSex.mortality}`);
+  // console.log(
+  //   `Mortality Per Year: ${highestMortalityPerYear.year} ~ ${highestMortalityPerYear.total_mortality}`
+  // );
+  // console.log(
+  //   `Mortality Per Country: ${highestMortalityPerCountry.name} ~ ${highestMortalityPerCountry.total_mortality}`
+  // );
+  // console.log(
+  //   `Mortality Per Sex: ${highestMortalityPerSex.sex} ~ ${highestMortalityPerSex.mortality}`
+  // );
+  // console.log(
+  //   `Mortality Per Ages: ${highestMortalityPerAgeGroup.sex} ~ ${highestMortalityPerSex.mortality}`
+  // );
 
   return {
     highestMortalityPerYear: {
@@ -95,12 +119,24 @@ const highestMortalityBarGraph = async (dataJsonUrl) => {
     .catch((error) => console.error("Error fetching data:", error));
 
   const getHighestMortalityPerCountryBarGraph = countries
-    .filter((country) => country.name !== "All" && country.year === "All")
+    .filter(
+      (country) =>
+        country.name !== "All" &&
+        (selectedDashYear
+          ? country.year === selectedDashYear
+          : country.year === "All")
+    )
     .sort((a, b) => b.total_mortality - a.total_mortality)
     .slice(0, 10);
 
   const getMaxMortality = countries
-    .filter((country) => country.name === "All" && country.year === "All")
+    .filter(
+      (country) =>
+        country.name === "All" &&
+        (selectedDashYear
+          ? country.year === selectedDashYear
+          : country.year === "All")
+    )
     .reduce((highest, current) =>
       current.total_mortality > highest
         ? current.total_mortality
@@ -171,7 +207,11 @@ const barGraphDataLoading = async (dataJsonUrl) => {
     .catch((err) => console.error(`Error fetching JSON data: ${err}`));
 
   const allCountriesByAllYears = countries.find(
-    (country) => country.name === "All" && country.year === "All"
+    (country) =>
+      country.name === "All" &&
+      (selectedDashYear
+        ? country.year === selectedDashYear
+        : country.year === "All")
   );
 
   const maleMortality = allCountriesByAllYears.male;
@@ -237,17 +277,30 @@ const lineGraphDataLoading = async (dataJsonUrl) => {
   chart.render();
 };
 
+const handleYearUpdate = (event) => {
+  const mapJsonUrl = "static/assets/json/map.json";
+  const dataJsonUrl = "static/assets/json/data.json";
+
+  selectedDashYear = parseInt(event.target.value, 10);
+
+  summaryDataLoading(dataJsonUrl);
+  highestMortalityBarGraph(dataJsonUrl);
+  barGraphDataLoading(dataJsonUrl);
+  lineGraphDataLoading(dataJsonUrl);
+  console.log(`Check: ${selectedDashYear}`);
+};
+
 const setupDashboardLoadingandListeners = () => {
   const mapJsonUrl = "static/assets/json/map.json";
   const dataJsonUrl = "static/assets/json/data.json";
-  const sexDonutChartId = "sex-donut";
-  const ageDonutChartId = "age-donut";
+  const selectYear = "year-select";
 
   console.log(`Dashboard loading and event listeners are running...`);
   summaryDataLoading(dataJsonUrl);
   mapDataLoading(mapJsonUrl, dataJsonUrl);
   barGraphDataLoading(dataJsonUrl);
   lineGraphDataLoading(dataJsonUrl);
+  attachChangeHandlerById(selectYear, handleYearUpdate);
 };
 
 setupDashboardLoadingandListeners();

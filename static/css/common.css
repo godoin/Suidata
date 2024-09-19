@@ -76,7 +76,7 @@ button:hover,
 }
 
 .outline {
-  background-color: transparent;
+  background-color: var(--gray-100);
   color: var(--sky-500);
   border: 1px solid var(--gray-300);
   padding: 0.6em;

@@ -17,3 +17,8 @@ export function attachInputHandlerById(selectorId, inputHandler) {
 
   element?.addEventListener("input", inputHandler);
 }
+
+export function attachChangeHandlerById(selectorId, changeHandler) {
+  const element = document.getElementById(selectorId);
+  element?.addEventListener("change", changeHandler);
+}

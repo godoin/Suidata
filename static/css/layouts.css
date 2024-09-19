@@ -3,7 +3,7 @@
   left: 0;
   top: 0;
   right: 0;
-  height: 4.5em;
+  min-height: 4.5em;
   min-width: 100dvw;
   background-color: var(--white);
   display: flex;
@@ -57,7 +57,7 @@
 }
 
 .navbar .right-content #nav-items .nav-item {
-  padding: 1em;
+  padding: 0.8em;
   font-weight: 600;
   text-align: left;
   cursor: pointer;

@@ -180,7 +180,7 @@ a {
 }
 
 main {
-  margin-top: 4.5em;
+  margin-top: 5.5em;
   /* max-width: 120em; */
   /* min-width: 100dvw; */
   /* min-height: 100dvh; */
@@ -257,5 +257,24 @@ p {
 
   h6 {
     font-size: 0.6rem;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }

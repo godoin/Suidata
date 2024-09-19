@@ -14,24 +14,30 @@
 }
 
 .info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+}
+
+.map-shadows {
+  background: rgba(255, 255, 255, 0.8);
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
 }
 
 .legend {
-    line-height: 18px;
-    color: #555;
+  padding: 0.6em 1em;
+  line-height: 18px;
+  color: #555;
 }
 .legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
 }
 
 /* Slider */
@@ -47,15 +53,14 @@
 
 #year-slider {
   flex: 1;
-  min-width:100%
+  min-width: 100%;
 }
-
 
 /* Data Column */
 .data-column {
   min-width: 14em;
   padding: 0.8em;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--gray-100);
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -125,6 +130,76 @@
 }
 
 .data-column .content section .group .bar .percentage {
+  min-height: inherit;
+  background-color: var(--sky-400);
+}
+
+.data-column .bar-graphs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+.data-column .bar-graphs .group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.data-column .bar-graphs .group .detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-column .bar-graphs .group .detail span {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.data-column .bar-graphs .group .bar {
+  min-height: 1em;
+  background-color: var(--gray-200);
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2em;
+}
+
+.data-column .bar-graphs .group .value-group {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.dashboard-container
+  .content
+  .right-content
+  .bar-graphs
+  .group
+  .value-group
+  .value {
+  font-size: 0.8rem;
+}
+
+.dashboard-container
+  .content
+  .right-content
+  .bar-graphs
+  .group
+  .bar
+  .percentage-display {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.dashboard-container
+  .content
+  .right-content
+  .bar-graphs
+  .group
+  .bar
+  .percentage {
   min-height: inherit;
   background-color: var(--sky-400);
 }

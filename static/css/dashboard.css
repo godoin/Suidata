@@ -195,17 +195,20 @@
   gap: 0.6rem;
   padding: 0.5em;
 }
+
 .dashboard-container .summary .bottom .data-row .column .number {
   font-size: 2rem;
   color: var(--gray-700);
   font-weight: 600;
 }
+
 .dashboard-container .summary .bottom .data-row .column .group {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 0.2em;
 }
+
 .dashboard-container .summary .bottom .data-row .column .group i,
 .dashboard-container .summary .bottom .data-row .column .group .value {
   font-size: 0.9rem;

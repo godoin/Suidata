@@ -5,11 +5,42 @@
     <h1 class="title">Dashboard</h1>
     <div class="actions">
       <select
-        id="yearSelect"
+        id="year-select"
         class="button outline"
-        aria-label="Select a year between 1979 and 2006"
+        aria-label="Select a year between 1985 and 2006"
       >
-        <option value="" checked>Select Year</option>
+        <option value="" checked>Filter by: All</option>
+        <option value="1985">Filter by: 1985</option>
+        <option value="1986">Filter by: 1986</option>
+        <option value="1987">Filter by: 1987</option>
+        <option value="1988">Filter by: 1988</option>
+        <option value="1989">Filter by: 1989</option>
+        <option value="1990">Filter by: 1990</option>
+        <option value="1991">Filter by: 1991</option>
+        <option value="1992">Filter by: 1992</option>
+        <option value="1993">Filter by: 1993</option>
+        <option value="1994">Filter by: 1994</option>
+        <option value="1995">Filter by: 1995</option>
+        <option value="1996">Filter by: 1996</option>
+        <option value="1997">Filter by: 1997</option>
+        <option value="1998">Filter by: 1998</option>
+        <option value="1999">Filter by: 1999</option>
+        <option value="2000">Filter by: 2000</option>
+        <option value="2001">Filter by: 2001</option>
+        <option value="2002">Filter by: 2002</option>
+        <option value="2003">Filter by: 2003</option>
+        <option value="2004">Filter by: 2004</option>
+        <option value="2005">Filter by: 2005</option>
+        <option value="2006">Filter by: 2006</option>
+        <option value="2007">Filter by: 2007</option>
+        <option value="2008">Filter by: 2008</option>
+        <option value="2009">Filter by: 2009</option>
+        <option value="2010">Filter by: 2010</option>
+        <option value="2012">Filter by: 2012</option>
+        <option value="2013">Filter by: 2013</option>
+        <option value="2014">Filter by: 2014</option>
+        <option value="2015">Filter by: 2015</option>
+        <option value="2016">Filter by: 2016</option>
       </select>
     </div>
   </header>
@@ -17,7 +48,7 @@
     <div class="left-content">
       <div class="summary">
         <header>
-          <h2 class="name">Highest Mortality Rates Per Category</h2>
+          <h2 class="name">Mortality Rates Per Category</h2>
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </header>
         <div class="bottom">
@@ -74,7 +105,7 @@
               <span class="title-group">Age Groups</span>
               <span class="title">Total Age Distribution</span>
             </div>
-            <i class="fa-solid fa-venus-mars"></i>
+            <i class="fa-solid fa-users"></i>
           </header>
           <div id="age-chart"></div>
         </div>
@@ -83,7 +114,7 @@
         <div class="wrapper">
           <header>
             <div class="group">
-              <span class="single-title">Total Age Distribution</span>
+              <span class="single-title">Mortality Rate Over The Years</span>
             </div>
           </header>
           <div id="line-chart"></div>
@@ -92,8 +123,8 @@
     </div>
     <div class="right-content">
       <header>
-        <i class="fa-regular fa-circle-question"></i>
-        <span class="title">Click to Modify</span>
+        <!-- <i class="fa-regular fa-circle-question"></i> -->
+        <span class="title">World Map</span>
       </header>
       <div class="map-wrapper">
         <div id="dashboardMap"></div>

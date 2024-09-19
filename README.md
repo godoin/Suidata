@@ -25,4 +25,4 @@ Szamil. (2018). WHO Suicide Statistics, v1.0. Retrieved May 10, 2024, from https
 
 ## License
 
-This project is not licensed yet under the MIT License.
+This project is under the MIT License.

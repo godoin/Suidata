@@ -6,8 +6,8 @@ A final data visualization project in fulfillment for the requirements of COMPSC
 
 ## Installation
 
-- Please download specifically Python v3.8.0
-- Open your terminal and clone this repository using `git clone https://github.com/godoin/StableEye` or `gh repo clone godoin/StableEye`
+- Please download Python v3.8.0 or above.
+- Open your terminal and clone this repository using `git clone https://github.com/godoin/Suidata` or `gh repo clone godoin/Suidata`
 - Create virtual environment (optional):
   - use `python3 -m venv .venv`
 - Run virtual environment (optional):

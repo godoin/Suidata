@@ -47,6 +47,7 @@
   right: 0;
   min-width: 100vw;
   min-height: calc(100vh - 4.5em);
+  background-color: var(--white);
   display: none;
   flex-direction: column;
   z-index: 999;
@@ -66,6 +67,7 @@
   font-weight: 500;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid transparent;
 }
 
 .navbar .right-content #nav-items .nav-item:hover {
@@ -74,6 +76,7 @@
 }
 
 .navbar .right-content #nav-items .actions {
+  width: 100%;
   padding: 1em;
   display: flex;
   justify-content: center;

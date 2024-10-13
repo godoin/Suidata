@@ -3,8 +3,7 @@
  */
 
 import {
-  attachChangeHandlerById,
-  attachInputHandlerById,
+  attachEventHandlerById,
 } from "../shared/eventHandlers.js";
 import {
   createOptionsBySex,
@@ -287,7 +286,7 @@ const handleYearUpdate = (event) => {
   highestMortalityBarGraph(dataJsonUrl);
   barGraphDataLoading(dataJsonUrl);
   lineGraphDataLoading(dataJsonUrl);
-  console.log(`Check: ${selectedDashYear}`);
+  // console.log(`Check: ${selectedDashYear}`);
 };
 
 const setupDashboardLoadingandListeners = () => {
@@ -300,7 +299,8 @@ const setupDashboardLoadingandListeners = () => {
   mapDataLoading(mapJsonUrl, dataJsonUrl);
   barGraphDataLoading(dataJsonUrl);
   lineGraphDataLoading(dataJsonUrl);
-  attachChangeHandlerById(selectYear, handleYearUpdate);
+
+  attachEventHandlerById(selectYear, "change", handleYearUpdate);
 };
 
 setupDashboardLoadingandListeners();

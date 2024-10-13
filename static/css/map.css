@@ -1,11 +1,10 @@
 .map-container {
-  /* padding: 1em 2.2em 1em 1.2em; */
+  margin-top: 4.5em;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 2em;
   position: relative;
-  /* max-height: 100vh; */
 }
 
 .map-container #map {
@@ -202,4 +201,8 @@
   .percentage {
   min-height: inherit;
   background-color: var(--sky-400);
+}
+
+.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  display: none;
 }

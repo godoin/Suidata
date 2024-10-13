@@ -11,7 +11,7 @@ const ageGroups = [
 ];
 
 export const getHighestMortalityPerAgeGroup = (data, year) => {
-  console.log(`Check output age: ${year}`);
+  // console.log(`Check output age: ${year}`);
   return data
     .filter(
       (country) =>
@@ -33,7 +33,7 @@ export const getHighestMortalityPerAgeGroup = (data, year) => {
 };
 
 export const getHighestMortalityPerCountry = (data, year) => {
-  console.log(`Check output country: ${year}`);
+  // console.log(`Check output country: ${year}`);
   return data
     .filter(
       (country) =>
@@ -48,7 +48,7 @@ export const getHighestMortalityPerCountry = (data, year) => {
 };
 
 export const getHighestMortalityPerYear = (data, year) => {
-  console.log(`Check output yeare: ${year}`);
+  // console.log(`Check output yeare: ${year}`);
   return data
     .filter(
       (country) =>
@@ -63,7 +63,7 @@ export const getHighestMortalityPerYear = (data, year) => {
 };
 
 export const getHighestMortalityPerSex = (data, year) => {
-  console.log(`Check output sex: ${year}`);
+  // console.log(`Check output sex: ${year}`);
   const mortalityCountMale = data
     .filter(
       (country) =>

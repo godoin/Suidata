@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1200"
+   height="600"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="Flag of Azerbaijan (WFB 2000).svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata20">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs18" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview16"
+     showgrid="false"
+     inkscape:zoom="0.66939442"
+     inkscape:cx="600"
+     inkscape:cy="231.75111"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <rect
+     width="1200"
+     height="600"
+     fill="#3f9c35"
+     id="rect2"
+     style="fill:#5bc23b;fill-opacity:1" />
+  <rect
+     width="1200"
+     height="400"
+     fill="#ed2939"
+     id="rect4"
+     style="fill:#ef2801;fill-opacity:1" />
+  <rect
+     width="1200"
+     height="200"
+     fill="#00b9e4"
+     id="rect6"
+     style="fill:#5db0d2;fill-opacity:1" />
+  <circle
+     cx="580"
+     cy="300"
+     r="90"
+     fill="#fff"
+     id="circle8" />
+  <circle
+     cx="600"
+     cy="300"
+     r="75"
+     fill="#ed2939"
+     id="circle10"
+     style="fill:#ef2801;fill-opacity:1" />
+  <path
+     d="M680,250 689.567,276.903 715.355,264.645 703.097,290.433 730,300 703.097,309.567 715.355,335.355 689.567,323.097 680,350 670.433,323.097 644.645,335.355 656.903,309.567 630,300 656.903,290.433 644.645,264.645 670.433,276.903 680,250z"
+     fill="#fff"
+     id="path12" />
+</svg>

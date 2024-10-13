@@ -3,8 +3,7 @@
  */
 
 import {
-  attachClickHandlerById,
-  attachInputHandlerById,
+  attachEventHandlerById,
 } from "../shared/eventHandlers.js";
 
 let allCountries = [];
@@ -20,7 +19,7 @@ const createTableDataElement = (country) => {
   const html = `
     <td class="data">
       <div class="group">
-        <img src="" alt="${country.name}" />
+        <img src="${country.image_url}" alt="${country.name}" height="30" width="60"/>
           ${country.name}
       </div>
     </td>
@@ -43,11 +42,6 @@ const createTableDataElement = (country) => {
 const loadCountryData = (data, tableBodyId, page = 1) => {
   const tableBody = document.getElementById(tableBodyId);
   const tableContainer = tableBody?.closest(`.table-container`);
-
-  if (!tableContainer) {
-    console.error("Error the table container is not found...");
-    return null;
-  }
 
   tableBody.innerHTML = "";
 
@@ -98,75 +92,64 @@ const initializeDataLoading = async (jsonUrl, tableBodyId) => {
     const data = await res.json();
     loadCountryData(data, tableBodyId);
     allCountries = data;
+
+    // const getAllCountries = allCountries.map((country) => country.name)
+    // const uniqueCountries = Array.from(new Set(getAllCountries));
+    // console.table(uniqueCountries);
+
   } catch (err) {
     console.error(err);
   }
 };
 
-const handleSearch = (event) => {
-  const searchTerm = document
-    .getElementById("search-input")
-    .value.toLowerCase();
+const handleSearch = (e, selectedYearId) => {
+  e.preventDefault();
+  
+  const searchTerm = e.target.value.toLowerCase();
+  const selectedYear = document.getElementById(selectedYearId).value;
 
-  const filteredCountries = allCountries.filter(
-    (data) =>
-      data.name?.toLowerCase().includes(searchTerm) ||
-      data.year?.toString().includes(searchTerm) ||
-      data.male?.toString().includes(searchTerm) ||
-      data.female?.toString().includes(searchTerm) ||
-      data.age_group_5_to_14?.toString().includes(searchTerm) || 
-      data.age_group_15_to_24?.toString().includes(searchTerm) ||
-      data.age_group_25_to_34?.toString().includes(searchTerm) ||
-      data.age_group_35_to_54?.toString().includes(searchTerm) ||
-      data.age_group_55_to_74?.toString().includes(searchTerm) ||
-      data.age_group_75_plus?.toString().includes(searchTerm)
-  );
+  const filteredCountries = allCountries
+    .filter((data) => data.name?.toLowerCase().includes(searchTerm))
+    .filter((data) => selectedYear ? data.year?.toString() === selectedYear: true);
 
   loadCountryData(filteredCountries, "table-body");
 };
 
-const handleSortOrder = (event) => {
-  const clickedHeader = event?.target.closest("th");
-  const columnId = clickedHeader.id;
+const handleSorting = (e, searchTermId) => {
+  e.preventDefault();
+  const selectedYear = e.target.value;
+  const searchTerm = document.getElementById(searchTermId).value.toLowerCase();
 
-  if (currentSortColumn === columnId) {
-    isAscending = !isAscending;
-  } else {
-    currentSortColumn = columnId;
-    isAscending = true;
-  }
-
-  const sortedCountries = allCountries.sort((a, b) => {
-    const valueA = a[columnId];
-    const valueB = b[columnId];
-
-    console.table(valueA);
-
-    if (typeof valueA === "number" && typeof valueB === "number") {
-      return isAscending ? valueA - valueB : valueB - valueA;
-    }
-
-    if (valueA < valueB) {
-      return isAscending ? -1 : 1;
-    }
-    if (valueA > valueB) {
-      return isAscending ? 1 : -1;
-    }
-    return 0;
-  });
+  const sortedCountries = allCountries
+    .filter((data) => searchTerm ? data.name?.toLowerCase().includes(searchTerm) : true)
+    .filter((data) => {
+        console.log(`${selectedYear} ~ ${data.year.toString()}`);
+        return data.year?.toString() === selectedYear;
+        }
+      );
 
   loadCountryData(sortedCountries, "table-body");
-};
+}
 
 export const setupDataLoadingAndListeners = () => {
   console.log("Data event loading and listeners are running...");
 
-  initializeDataLoading("static/assets/json/data.json", "table-body");
-  attachInputHandlerById("search-input", handleSearch);
-  document.querySelectorAll(".header").forEach((header) => {
-    header.addEventListener("click", handleSortOrder);
-  });
+  // Variables
+  const jsonUrl = "static/assets/json/data.json";
+  const tableBody = "table-body";
 
-  attachClickHandlerById("prev-button", handlePreviousPage);
-  attachClickHandlerById("next-button", handleNextPage);
+  const yearSelectedId = "data-year-select";
+  const searchInputId = "search-input";
+
+  const previousBtn = "prev-button";
+  const nextBtn = "next-button";
+
+  // Initializers
+  initializeDataLoading(jsonUrl, tableBody);
+  
+  // Event Listeners
+  attachEventHandlerById(yearSelectedId, "change", handleSorting, searchInputId);
+  attachEventHandlerById(searchInputId, "input", handleSearch, yearSelectedId);
+  attachEventHandlerById(previousBtn, "click", handlePreviousPage);
+  attachEventHandlerById(nextBtn, "click", handleNextPage);
 };

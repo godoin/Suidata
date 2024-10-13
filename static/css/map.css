@@ -7,6 +7,12 @@
   position: relative;
 }
 
+@media (min-width: 728px) {
+  .map-container {
+    margin-top: 5em;
+  }
+}
+
 .map-container #map {
   min-height: calc(100vh - 5.5em);
   z-index: 1;
@@ -27,16 +33,24 @@
 }
 
 .legend {
+  display: none;
   padding: 0.6em 1em;
   line-height: 18px;
   color: #555;
 }
+
 .legend i {
   width: 18px;
   height: 18px;
   float: left;
   margin-right: 8px;
   opacity: 0.7;
+}
+
+@media (min-width:728px) {
+  .legend {
+    display: block;
+  }
 }
 
 /* Slider */
@@ -57,7 +71,7 @@
 
 /* Data Column */
 .data-column {
-  min-width: 14em;
+  min-width: 10em;
   padding: 0.8em;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--gray-100);
@@ -68,10 +82,17 @@
   border-radius: 0.4em;
 }
 
+@media (min-width:728px) {
+  .data-column {
+    width: 16em;
+  }
+}
+
 .data-column h1,
 .data-column h2 {
   color: var(--gray-500);
   font-weight: 600;
+  width: 100%;
 }
 
 .data-column h2 {
@@ -102,19 +123,37 @@
 .data-column .content section {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   gap: 0.5em;
 }
 
 .data-column .content section .group {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0;
 }
 
+
 .data-column .content section .group .detail {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+}
+
+@media (min-width: 728px) {
+  .data-column .content section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .data-column .content section .group .detail {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .data-column .content section .group .detail span {
@@ -122,11 +161,24 @@
   color: var(--gray-700);
 }
 
+.data-column .content section .group .detail span.value {
+  font-weight: 600;
+}
+
 .data-column .content section .group .bar {
+  display: none;
   min-height: 0.6em;
   background-color: var(--gray-200);
   min-width: 100%;
 }
+
+@media (min-width: 728px) {
+  .data-column .content section .group .bar {
+    display: block;
+    min-width: 100%;
+  }
+}
+
 
 .data-column .content section .group .bar .percentage {
   min-height: inherit;

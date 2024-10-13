@@ -170,10 +170,21 @@ a {
 }
 
 .container {
-  /* display: flex;
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
+}
+
+.container:has(.map-container) {
+  display: initial;
+  justify-content: none;
+  flex-direction: initial;
+  align-items: none;
+}
+
+.container:has(.map-container) footer {
+  display: none;
 }
 
 main {

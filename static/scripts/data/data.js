@@ -39,11 +39,11 @@ const createTableDataElement = (country) => {
   return newRowData;
 };
 
-const loadCountryData = (data, tableBodyId, page = 1) => {
-  const tableBody = document.getElementById(tableBodyId);
-  const tableContainer = tableBody?.closest(`.table-container`);
+const loadCountryData = (data, tableBodyIdId, page = 1) => {
+  const tableBodyId = document.getElementById(tableBodyIdId);
+  const tableContainer = tableBodyId?.closest(`.table-container`);
 
-  tableBody.innerHTML = "";
+  tableBodyId.innerHTML = "";
 
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -51,7 +51,7 @@ const loadCountryData = (data, tableBodyId, page = 1) => {
   const pageData = data.slice(startIndex, endIndex);
 
   const dataElements = pageData.map(createTableDataElement);
-  dataElements.forEach((element) => tableBody.appendChild(element));
+  dataElements.forEach((element) => tableBodyId.appendChild(element));
 
   updatePaginationButtons();
 };
@@ -80,7 +80,7 @@ const handleNextPage = () => {
   }
 };
 
-const initializeDataLoading = async (jsonUrl, tableBodyId) => {
+const initializeDataLoading = async (jsonUrl, tableBodyIdId) => {
   try {
     const res = await fetch(jsonUrl);
 
@@ -90,7 +90,7 @@ const initializeDataLoading = async (jsonUrl, tableBodyId) => {
     }
 
     const data = await res.json();
-    loadCountryData(data, tableBodyId);
+    loadCountryData(data, tableBodyIdId);
     allCountries = data;
 
     // const getAllCountries = allCountries.map((country) => country.name)
@@ -136,7 +136,7 @@ export const setupDataLoadingAndListeners = () => {
 
   // Variables
   const jsonUrl = "static/assets/json/data.json";
-  const tableBody = "table-body";
+  const tableBodyId = "table-body";
 
   const yearSelectedId = "data-year-select";
   const searchInputId = "search-input";
@@ -144,12 +144,16 @@ export const setupDataLoadingAndListeners = () => {
   const previousBtn = "prev-button";
   const nextBtn = "next-button";
 
-  // Initializers
-  initializeDataLoading(jsonUrl, tableBody);
-  
-  // Event Listeners
-  attachEventHandlerById(yearSelectedId, "change", handleSorting, searchInputId);
-  attachEventHandlerById(searchInputId, "input", handleSearch, yearSelectedId);
-  attachEventHandlerById(previousBtn, "click", handlePreviousPage);
-  attachEventHandlerById(nextBtn, "click", handleNextPage);
+  const tableBody = document.getElementById(tableBodyId);
+
+  if(tableBody) {
+    // Initializers
+    initializeDataLoading(jsonUrl, tableBodyId);
+    
+    // Event Listeners
+    attachEventHandlerById(yearSelectedId, "change", handleSorting, searchInputId);
+    attachEventHandlerById(searchInputId, "input", handleSearch, yearSelectedId);
+    attachEventHandlerById(previousBtn, "click", handlePreviousPage);
+    attachEventHandlerById(nextBtn, "click", handleNextPage);
+  }
 };

@@ -19,14 +19,11 @@ import {
 } from "./dashboardUtils.js";
 
 let dashboardGeoJson;
-let dashboardMap = L.map("dashboardMap", {
-  zoomControl: false,
-  dragging: false,
-  scrollWheelZoom: false,
-});
 let dashboardTiles;
 let dashboardInfo = L.control();
 let selectedDashYear = "";
+let dashboardMap;
+
 
 const getSummaryDetails = async (dataJsonUrl) => {
   const data = await fetch(dataJsonUrl)
@@ -290,17 +287,31 @@ const handleYearUpdate = (event) => {
 };
 
 const setupDashboardLoadingandListeners = () => {
+  console.log(`Dashboard loading and event listeners are running...`);
   const mapJsonUrl = "static/assets/json/map.json";
   const dataJsonUrl = "static/assets/json/data.json";
   const selectYear = "year-select";
-
-  console.log(`Dashboard loading and event listeners are running...`);
-  summaryDataLoading(dataJsonUrl);
-  mapDataLoading(mapJsonUrl, dataJsonUrl);
-  barGraphDataLoading(dataJsonUrl);
-  lineGraphDataLoading(dataJsonUrl);
-
-  attachEventHandlerById(selectYear, "change", handleYearUpdate);
+  const dashboardMapId = "dashboardMap"
+  
+  const mapElement = document.getElementById(dashboardMapId);
+  
+  if (mapElement) {
+    // Intialize Map
+    dashboardMap = L.map("dashboardMap", {
+      zoomControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+    });  
+    
+    // Initializers
+    summaryDataLoading(dataJsonUrl);
+    mapDataLoading(mapJsonUrl, dataJsonUrl);
+    barGraphDataLoading(dataJsonUrl);
+    lineGraphDataLoading(dataJsonUrl);
+  
+    // Click Events
+    attachEventHandlerById(selectYear, "change", handleYearUpdate);
+  }
 };
 
 setupDashboardLoadingandListeners();

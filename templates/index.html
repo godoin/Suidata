@@ -41,11 +41,16 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/dashboard.css') }}"
     />
-
-    <script
-      src="https://kit.fontawesome.com/84e2199ce0.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- <link 
+      rel="stylesheet" 
+      href="{{ url_for('static', filename='leaflet/leaflet.css') }}"
+      crossorigin=""
+    />
+    <link 
+      rel="stylesheet" 
+      href="{{ url_for('static', filename='leaflet/leaflet.js') }}"
+      crossorigin=""
+    /> -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -96,10 +101,6 @@
     ></script>
     <script
       src="{{ url_for('static', filename='scripts/dashboard/dashboard.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/charts/line-chart.js') }}"
       type="module"
     ></script>
   </body>

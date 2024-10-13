@@ -1,33 +1,36 @@
 <nav class="navbar">
-  <!-- Left Content -->
-  <section class="left-content">
-    <a href="/" class="logo-wrapper">
-      <img
-        src="{{ url_for('static', filename='assets/images/full_logo.png') }}"
-        alt=""
-      />
-    </a>
-  </section>
-
-  <!-- Right Content -->
-  <div class="right-content">
-    <ul class="nav-items" id="nav-items">
-      <a href="/" class="nav-item">Home</a>
-      <a href="/dashboard" class="nav-item">Dashboard</a>
-      <a href="/map" class="nav-item">Map</a>
-      <a href="/data" class="nav-item">Data</a>
-      <li class="actions">
-        <a href="/map" class="button primary">Explore Map</a>
-      </li>
-    </ul>
-    <button class="ghost menu" id="menu-btn">
-      <img
-        src="static/assets/images/icons/menu.svg"
-        alt="Menu"
-        width="20"
-        id="menu-icon"
-        class="menu-icon"
-      />
-    </button>
+  <div class="container">
+    <!-- Left Content -->
+    <section class="left-content">
+      <a href="/" class="logo-wrapper">
+        <img
+          src="{{ url_for('static', filename='assets/images/logo.png') }}"
+          alt="Suidata"
+        />
+        <span class="title">Suidata</span>
+      </a>
+    </section>
+  
+    <!-- Right Content -->
+    <div class="right-content">
+      <ul class="nav-items" id="nav-items">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/dashboard" class="nav-item">Dashboard</a>
+        <a href="/map" class="nav-item">Map</a>
+        <a href="/data" class="nav-item">Data</a>
+        <li class="actions">
+          <a href="/map" class="button primary">Explore Map</a>
+        </li>
+      </ul>
+      <button class="ghost menu" id="menu-btn">
+        <img
+          src="static/assets/images/icons/menu.svg"
+          alt="Menu"
+          width="20"
+          id="menu-icon"
+          class="menu-icon"
+        />
+      </button>
+    </div>
   </div>
 </nav>

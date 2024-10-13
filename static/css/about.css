@@ -2,7 +2,7 @@
 .about-container {
   display: flex;
   flex-direction: column;
-  /* max-width: 90em; */
+  max-width: 90em;
 }
 
 .about-container > section {

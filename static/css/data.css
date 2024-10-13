@@ -6,7 +6,8 @@
   flex-direction: column;
   gap: 2em;
   min-height: 100dvh;
-  max-width: 1440px;
+  width: 100%;
+  max-width: 90em;
 }
 
 /* Header */

@@ -4,23 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{{ title_page }}</title>
-    <link rel="icon" href="{{ url_for('static', filename='assets/images/logo.png') }}" type="image/x-icon"/>
+    <title>Suidata | Expore Global Mortality</title>
+    <link rel="shortcut icon" href="/assets/images/logo.png" type="image/x-icon">
+    <link rel="canonical" href="https://suidata.pages.dev/">
+    <!-- Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Site Meta -->
+    <meta name="description" content="Explore interactive visualizations of mortality statistics from 1979 to 2016, based on data from Kaggle and the WHO. Analyze trends, filter by country, and gain insights into this critical issue.">
+    <meta name="keywords" content="mortality statistics, data visualization, mental health, WHO, Kaggle, interactive map, charts, data analysis, global health"> 
+    <meta property="og:title" content="Interactive Mortality Statistics Visualization">
+    <meta property="og:description" content="Explore interactive visualizations of mortality statistics from 1979 to 2016, based on data from Kaggle and the WHO.">
+    <meta property="og:image" content="/assets/images/suidata_front.png"> 
+    <meta property="og:url" content="https://suidata.pages.dev/"> 
 
     <!-- CSS Links -->
-    <link rel="stylesheet" href="static/assets/css/global.css "/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/layouts.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/data.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
-    
-    <!-- Script Links -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="/assets/css/global.css" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/common.css" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/index.css" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/layouts.css" type="text/css" fetchpriority="high" />
+
+    <link rel="stylesheet" href="/assets/css/about.css" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/map.css" type="text/css" fetchpriority="low" />
+    <link rel="stylesheet" href="/assets/css/data.css" type="text/css" fetchpriority="low" />
+    <link rel="stylesheet" href="/assets/css/dashboard.css" type="text/css" fetchpriority="low" />
+
+    <!-- Prefetch Links -->
+    <link rel="prefetch" href="/assets/css/map.css" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/css/about.css" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/css/data.css" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/css/dashboard.css" as="style" fetchpriority="low" />
+
+    <link rel="prefetch" href="/" as="document" fetchpriority="low" /> 
+    <link rel="prefetch" href="map.html" as="document" fetchpriority="low" /> 
+    <link rel="prefetch" href="data.html" as="document" fetchpriority="low" /> 
+    <link rel="prefetch" href="dashboard.html" as="document" fetchpriority="low" />
+
+    <!-- Module Links -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" fetchpriority="low" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" fetchpriority="low"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" fetchpriority="low"></script>
+
+    <!-- Prefetch Module Links -->
+    <link rel="prefetch" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" as="script" /> 
+    <link rel="prefetch" href="https://cdn.jsdelivr.net/npm/apexcharts" as="script" /> 
   </head>
   <body>
     <div class="container">
@@ -28,40 +55,238 @@
             <div class="container">
                 <!-- Left Content -->
                 <section class="left-content">
-                <a href="/" class="logo-wrapper">
-                    <img
-                    src="{{ url_for('static', filename='assets/images/logo.png') }}"
-                    alt="Suidata"
-                    />
-                    <span class="title">Suidata</span>
-                </a>
+                  <a href="/" class="logo-wrapper">
+                      <img
+                      src="/assets/images/logo.png"
+                      alt="Suidata"
+                      />
+                      <span class="title">Suidata</span>
+                  </a>
                 </section>
             
                 <!-- Right Content -->
                 <div class="right-content">
-                <ul class="nav-items" id="nav-items">
-                    <a href="/" class="nav-item">Home</a>
-                    <a href="/dashboard" class="nav-item">Dashboard</a>
-                    <a href="/map" class="nav-item">Map</a>
-                    <a href="/data" class="nav-item">Data</a>
-                    <li class="actions">
-                    <a href="/map" class="button primary">Explore Map</a>
-                    </li>
-                </ul>
-                <button class="ghost menu" id="menu-btn">
-                    <img
-                    src="static/assets/images/icons/menu.svg"
-                    alt="Menu"
-                    width="20"
-                    id="menu-icon"
-                    class="menu-icon"
-                    />
-                </button>
+                    <ul class="nav-items" id="nav-items">
+                        <a href="/" class="nav-item">Home</a>
+                        <a href="dashboard.html" class="nav-item">Dashboard</a>
+                        <a href="map.html" class="nav-item">Map</a>
+                        <a href="data.html" class="nav-item">Data</a>
+                        <li class="actions">
+                            <a href="map.html" class="button primary">Explore Map</a>
+                        </li>
+                    </ul>
+                    
+                    <button class="ghost menu" id="menu-btn">
+                        <img
+                        src="/assets/images/icons/menu.svg"
+                        alt="Menu"
+                        width="20"
+                        id="menu-icon"
+                        class="menu-icon"
+                        />
+                    </button>
                 </div>
             </div>
         </nav>
 
+        <main class="about-container">
+          <!-- Hero Section -->
+          <section class="hero">
+            <div class="wrapper">
+              <picture class="image">
+                <source srcset="/assets/webp/world.webp" class="world-img" type="image/webp">
+                <img 
+                  class="world-img"
+                  loading="eager" 
+                  role="presentation" 
+                  src="/assets/images/world.png"
+                  decoding="sync"
+                  fetchpriority="high"
+                  sizes=""/>
+              </picture>
 
+              <header>
+                <h1 class="title main">
+                  A Data-Driven Journey Through Four Decades of Global Mortality
+                </h1>
+                <div class="description">
+                  <p>
+                    Discover interactive charts, maps, and filterable data to explore
+                    trends in suicide mortality across countries, age groups, and
+                    genders, all based on the comprehensive WHO Suicide Statistics
+                    dataset from
+                    <a
+                      href="https://www.kaggle.com/datasets/szamil/who-suicide-statistics"
+                      >Kaggle.</a
+                    >
+                  </p>
+                </div>
+              </header>
+            </div>
+          </section>
+
+          <!-- About Section -->
+          <section class="about">
+            <h2 class="title">
+              Data Visualization and Analysis of WHO Suicide Statistics
+            </h2>
+            <p class="description">
+              Welcome to a course project requirement in fulfillment of CSE3 Analytics
+              Programming. This data visualization project utilizes the WHO Suicide
+              Statistics dataset, spanning from 1979 to 2016, to visualize and analyze
+              suicide mortality across countries, age groups, and genders.
+            </p>
+          </section>
+
+          <section class="scope">
+            <picture class="image">
+              <source srcset="/assets/webp/south_america.webp" class="left-img" type="image/webp">
+              <img 
+                class="left-img"
+                loading="lazy" 
+                role="presentation" 
+                src="/assets/images/south_america.png"
+                decoding="async"
+                fetchpriority="low"
+                sizes=""/>
+            </picture>
+            <div class="content">
+              <h2 class="title">Scope and Limtations</h2>
+              <p class="description">
+                While the WHO dataset is a valuable resource, it's important to
+                acknowledge its limitations. Not all countries are included, and data
+                availability and quality vary across countries and time periods.
+                Additionally, underreporting of suicides is a known issue. We strive to
+                be transparent with viewers about these data limitations and encourage
+                interpretations of our visualizations with these caveats in mind.
+              </p>
+            </div>
+          </section>
+
+          <section class="mission">
+            <header>
+              <h2 class="title">
+                Data speaks louder than words, know the ins and outs of suicide, a
+                leading cause of early mortality
+              </h2>
+            </header>
+            <div class="content">
+              <div class="column">
+                <div class="card inform">
+                  <p class="description">
+                    We are to <b class="bold">inform</b> the often-hidden realities of
+                    suicide through visualization.
+                  </p>
+                  <div class="visual">
+                    <picture class="image">
+                      <source srcset="/assets/webp/informed_decision.webp" class="visual-img" type="image/webp">
+                      <img 
+                        class="visual-img"
+                        loading="lazy" 
+                        role="presentation" 
+                        src="/assets/images/informed_decision.png"
+                        decoding="async"
+                        fetchpriority="high"
+                        sizes=""/>
+                    </picture>
+                  </div>
+                </div>
+                <div class="card inspire">
+                  <p class="description">
+                    To <b class="bold">inspire</b> understanding, empathy and action for
+                    prevention.
+                  </p>
+                  <div class="visual">
+                    <picture class="image">
+                      <source srcset="/assets/webp/conference_speaker.webp" class="visual" type="image/webp">
+                      <img 
+                        class="visual"
+                        loading="lazy" 
+                        role="presentation" 
+                        src="/assets/images/conference_speaker.png"
+                        decoding="async"
+                        fetchpriority="high"
+                        sizes=""/>
+                    </picture>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card analyze">
+                  <p class="description">
+                    To <b class="bold">analyze</b> hidden patterns and evaluate
+                    prevention strategies for people.
+                  </p>
+                  <div class="visual">
+                    <picture class="image">
+                      <source srcset="/assets/webp/buffer.webp" class="visual" type="image/webp">
+                      <img 
+                        class="visual"
+                        loading="lazy" 
+                        role="presentation" 
+                        src="/assets/images/buffer.png"
+                        decoding="async"
+                        fetchpriority="high"
+                        sizes=""/>
+                    </picture>
+                  </div>
+                </div>
+                <div class="card awareness">
+                  <p class="description">
+                    ..and especially to <b class="bold">spread</b> awareness to prove
+                    that we care.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="features">
+            <header>
+              <h2 class="title">Key Features</h2>
+            </header>
+            <div class="content">
+              <div class="card">
+                <span class="number">01</span>
+                <p class="description">
+                  Explore trends in suicide rates over time, comparing different
+                  countries, age groups, and sex.
+                </p>
+              </div>
+              <div class="card">
+                <span class="number">02</span>
+                <p class="description">
+                  Visualize the geographical distribution of suicide rates across the
+                  globe, highlighting regional disparities.
+                </p>
+              </div>
+              <div class="card">
+                <span class="number">03</span>
+                <p class="description">
+                  Delve deeper into specific data points and uncover hidden patterns.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="cta">
+            <div class="wrapper">
+              <header>
+                <h2 class="title">Uncover The Stores Behind Numbers</h2>
+                <p class="description">
+                  Ready to explore the data and uncover the stories behind the numbers?
+                  Our interactive map and dashboard allow you to delve into the global
+                  landscape of suicide, revealing trends, patterns, and insights that
+                  can help us better understand and address this critical issue.
+                </p>
+              </header>
+              <div class="actions">
+                <a href="/dashboard" class="button primary">View Dashboard</a>
+                <a href="/map" class="button secondary">Explore Map</a>
+              </div>
+            </div>
+          </section>
+        </main>
 
         <footer>
             <!-- Top Content -->
@@ -69,7 +294,7 @@
                 <div class="left-content">
                     <a href="/" class="logo-wrapper">
                     <img
-                        src="{{ url_for('static', filename='assets/images/logo_dark.png') }}"
+                        src="/assets/images/logo_dark.png"
                         alt="Suidata"
                     />
                     <span class="title">Suidata</span>
@@ -81,13 +306,13 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/dashboard">Dashboard</a>
+                        <a href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/data">Data</a>
+                        <a href="data.html">Data</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/map">Map</a>
+                        <a href="map.html">Map</a>
                     </li>
                 </ul>
                 
@@ -102,38 +327,15 @@
         </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script
-      src="{{ url_for('static', filename='scripts/index.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/shared/eventHandlers.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/shared/menuToggle.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/data/data.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/data/filters.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/map/map.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/map/mapUtils.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/dashboard/dashboard.js') }}"
-      type="module"
-    ></script>
+    <!-- Scripts Js -->
+    <script rel="preload" src="/assets/scripts/index.js" type="module" fetchpriority="high"></script>
+    <script rel="preload" src="/assets/scripts/shared/eventHandlers.js" type="module" fetchpriority="high"></script>
+    <script rel="preload" src="/assets/scripts/shared/menuToggle.js" type="module" fetchpriority="high"></script>
+
+    <script rel="prefetch" src="/assets/scripts/data/data.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/data/filters.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/map/map.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/map/mapUtils.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/dashboard/dashboard.js" type="module" fetchpriority="low"></script>
   </body>
 </html>

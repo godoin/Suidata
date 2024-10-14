@@ -82,7 +82,7 @@
   border-radius: 0.4em;
 }
 
-@media (min-width:728px) {
+@media (min-width:572px) {
   .data-column {
     width: 16em;
   }

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suidata | Explore Global Mortality</title>
+
+    <link rel="shortcut icon" href="/assets/images/logo.png" type="image/x-icon" />
+    <link rel="canonical" href="https://suidata.pages.dev/" />
+    <!-- Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Explore interactive visualizations of mortality statistics from 1979 to 2016, based on data from Kaggle and the WHO. Analyze trends, filter by country, and gain insights into this critical issue." />
+    <meta name="keywords" content="mortality statistics, data visualization, mental health, WHO, Kaggle, interactive map, charts, data analysis, global health" />
+    <meta property="og:title" content="Interactive Mortality Statistics Visualization" />
+    <meta property="og:description" content="Explore interactive visualizations of mortality statistics from 1979 to 2016, based on data from Kaggle and the WHO." />
+    <meta property="og:image" content="/assets/images/suidata_front.png" />
+    <meta property="og:url" content="https://suidata.pages.dev/" />
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="/assets/css/global.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/common.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/index.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/layouts.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/about.css" fetchpriority="high" />
+    <link rel="stylesheet" href="/assets/css/map.css" fetchpriority="low" />
+    <link rel="stylesheet" href="/assets/css/data.css" fetchpriority="low" />
+    <link rel="stylesheet" href="/assets/css/dashboard.css" fetchpriority="low" />
+
+    <!-- Prefetch Links -->
+    <link rel="prefetch" href="/assets/css/map.css" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/css/about.css" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/css/data.css" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/css/dashboard.css" as="style" fetchpriority="low" />
+
+    <link rel="prefetch" href="/" as="document" fetchpriority="low" />
+    <link rel="prefetch" href="/map" as="document" fetchpriority="low" />
+    <link rel="prefetch" href="/data" as="document" fetchpriority="low" />
+    <link rel="prefetch" href="/dashboard" as="document" fetchpriority="low" />
+
+    <!-- Module Links -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" fetchpriority="low" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" fetchpriority="low"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" fetchpriority="low"></script>
+
+    <!-- Prefetch Module Links -->
+    <link rel="prefetch" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" as="script" />
+    <link rel="prefetch" href="https://cdn.jsdelivr.net/npm/apexcharts" as="script" />
+  </head>
+
+  <body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="container">
+                <!-- Left Content -->
+                <section class="left-content">
+                <a href="/" class="logo-wrapper">
+                    <img
+                    src="/assets/images/logo.png"
+                    alt="Suidata"
+                    />
+                    <span class="title">Suidata</span>
+                </a>
+                </section>
+            
+                <!-- Right Content -->
+                <div class="right-content">
+                    <ul class="nav-items" id="nav-items">
+                        <a href="/" class="nav-item">Home</a>
+                        <a href="dashboard.html" class="nav-item">Dashboard</a>
+                        <a href="map.html" class="nav-item">Map</a>
+                        <a href="data.html" class="nav-item">Data</a>
+                        <li class="actions">
+                            <a href="map.html" class="button primary">Explore Map</a>
+                        </li>
+                    </ul>
+                    
+                    <button class="ghost menu" id="menu-btn">
+                        <img
+                        src="/assets/images/icons/menu.svg"
+                        alt="Menu"
+                        width="20"
+                        id="menu-icon"
+                        class="menu-icon"
+                        />
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+      <main class="dashboard-container">
+        <header>
+          <h1 class="title">Dashboard</h1>
+          <div class="actions">
+                <select
+                    id="year-select"
+                    class="button outline"
+                    aria-label="Select a year between 1985 and 2006"
+                >
+                    <option value="" checked>Filter by: All</option>
+                    <option value="1985">Filter by: 1985</option>
+                    <option value="1986">Filter by: 1986</option>
+                    <option value="1987">Filter by: 1987</option>
+                    <option value="1988">Filter by: 1988</option>
+                    <option value="1989">Filter by: 1989</option>
+                    <option value="1990">Filter by: 1990</option>
+                    <option value="1991">Filter by: 1991</option>
+                    <option value="1992">Filter by: 1992</option>
+                    <option value="1993">Filter by: 1993</option>
+                    <option value="1994">Filter by: 1994</option>
+                    <option value="1995">Filter by: 1995</option>
+                    <option value="1996">Filter by: 1996</option>
+                    <option value="1997">Filter by: 1997</option>
+                    <option value="1998">Filter by: 1998</option>
+                    <option value="1999">Filter by: 1999</option>
+                    <option value="2000">Filter by: 2000</option>
+                    <option value="2001">Filter by: 2001</option>
+                    <option value="2002">Filter by: 2002</option>
+                    <option value="2003">Filter by: 2003</option>
+                    <option value="2004">Filter by: 2004</option>
+                    <option value="2005">Filter by: 2005</option>
+                    <option value="2006">Filter by: 2006</option>
+                    <option value="2007">Filter by: 2007</option>
+                    <option value="2008">Filter by: 2008</option>
+                    <option value="2009">Filter by: 2009</option>
+                    <option value="2010">Filter by: 2010</option>
+                    <option value="2012">Filter by: 2012</option>
+                    <option value="2013">Filter by: 2013</option>
+                    <option value="2014">Filter by: 2014</option>
+                    <option value="2015">Filter by: 2015</option>
+                    <option value="2016">Filter by: 2016</option>
+                </select>
+          </div>
+        </header>
+
+        <div class="content">
+          <div class="left-content">
+            <div class="summary">
+              <header>
+                <h2 class="name">Highest Mortality By Category</h2>
+                <img src="/assets/images/icons/earth-americas-solid.svg" width="32" height="32" alt="" />
+              </header>
+
+              <div class="bottom">
+                <div class="data-row" id="data-row">
+                  <div class="column" id="year-column">
+                    <span class="number">1,117,800</span>
+                    <div class="group">
+                      <img src="/assets/images/icons/clock-regular.svg" width="16" height="16" alt="" />
+                      <span class="value">1980</span>
+                    </div>
+                  </div>
+                  <div class="column" id="sex-column">
+                    <span class="number">755,240</span>
+                    <div class="group">
+                      <img src="/assets/images/icons/venus-mars-solid.svg" width="16" height="16" alt="" />
+                      <span class="value">Males</span>
+                    </div>
+                  </div>
+                  <div class="column" id="age-column">
+                    <span class="number">377,188</span>
+                    <div class="group">
+                      <img src="/assets/images/icons/user-group-solid.svg" width="16" height="16" alt="" />
+                      <span class="value">15-24 years</span>
+                    </div>
+                  </div>
+                  <div class="column" id="country-column">
+                    <span class="number">252,123</span>
+                    <div class="group">
+                      <img src="/assets/images/icons/flag-regular.svg" width="16" height="16" alt="" />
+                      <span class="value">Brazil</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="filter">
+                  <span class="name">All Countries</span>
+                  <span class="title">Selected Countries</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row-graphs donut">
+              <div class="wrapper" id="sex-donut">
+                <header>
+                  <div class="group">
+                    <span class="title-group">Sex</span>
+                    <span class="title">Total Sex Distribution</span>
+                  </div>
+                  <img src="/assets/images/icons/venus-mars-solid.svg" width="32" height="32" alt="" />
+                </header>
+                <div id="sex-chart"></div>
+              </div>
+              <div class="wrapper" id="age-donut">
+                <header>
+                  <div class="group">
+                    <span class="title-group">Age Groups</span>
+                    <span class="title">Total Age Distribution</span>
+                  </div>
+                  <img src="/assets/images/icons/user-group-solid.svg" width="32" height="32" alt="" />
+                </header>
+                <div id="age-chart"></div>
+              </div>
+            </div>
+
+            <div class="row-graphs">
+              <div class="wrapper">
+                <header>
+                  <div class="group">
+                    <span class="single-title">Mortality Rate Over The Years</span>
+                  </div>
+                </header>
+                <div id="line-chart"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-content">
+            <header>
+              <span class="title">Highest Mortality Rates: Top 10 Countries</span>
+            </header>
+
+            <div class="column group countries">
+              <span class="item">Brazil</span>
+              <span class="item">Brazil</span>
+              <span class="item">Mexico</span>
+              <span class="item">United States</span>
+              <span class="item">Argentina</span>
+              <span class="item">Brazil</span>
+              <span class="item">Japan</span>
+              <span class="item">India</span>
+              <span class="item">Russia</span>
+              <span class="item">Italy</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Scripts Js -->
+    <script rel="preload" src="/assets/scripts/index.js" type="module" fetchpriority="high"></script>
+    <script rel="preload" src="/assets/scripts/shared/eventHandlers.js" type="module" fetchpriority="high"></script>
+    <script rel="preload" src="/assets/scripts/shared/menuToggle.js" type="module" fetchpriority="high"></script>
+
+    <script rel="prefetch" src="/assets/scripts/data/data.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/data/filters.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/map/map.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/map/mapUtils.js" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="/assets/scripts/dashboard/dashboard.js" type="module" fetchpriority="low"></script>
+  </body>
+</html>

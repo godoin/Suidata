@@ -7,7 +7,7 @@
   background-color: var(--white);
   padding: 0 1.2em;
   border-bottom: 1px solid var(--gray-300);
-  z-index: 999;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;

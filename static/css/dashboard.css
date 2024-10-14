@@ -5,6 +5,8 @@
   flex-direction: column;
   gap: 1em;
   min-height: 100dvh;
+  width: 100%;
+  max-width: 90em;
 }
 
 /* Header */
@@ -41,7 +43,7 @@
 
 .dashboard-container .content .right-content {
   padding: 1em;
-  min-width: 20em;
+  width: 100%;
   border: 1px solid var(--gray-300);
   border-radius: 0.6em;
   display: flex;
@@ -50,6 +52,12 @@
 }
 
 @media (min-width: 728px) {
+  .dashboard-container .content .right-content {
+    max-width: 28em;
+  }
+}
+
+@media (min-width: 1024px) {
   .dashboard-container .content {
     flex-direction: row;
   }
@@ -87,6 +95,7 @@
   line-height: 2em;
 }
 
+.dashboard-container .content .left-content .summary header i,
 .dashboard-container .content .left-content .row-graphs .wrapper header i {
   font-size: 2rem;
   color: var(--gray-700);

@@ -1,18 +1,10 @@
-import { attachChangeHandlerById } from "../shared/eventHandlers.js";
-// import {
-//   highlightFeature,
-//   resetHighlight,
-//   zoomToFeature,
-//   onEachFeature,
-// } from "./mapUtils.js";
-
-let geoJson;
-let map = L.map("map");
+let map;
 let tiles;
 let info = L.control();
 let legend = L.control();
 let yearSelectControl = L.control();
 let selectedMapYear = "";
+let geoJson;
 
 const highlightFeature = (e) => {
   var layer = e.target;
@@ -28,24 +20,28 @@ const highlightFeature = (e) => {
 };
 
 const resetHighlight = (e) => {
+  // const originalStyle = style(e.target.feature);
+  // e.target.setStyle(originalStyle);
   geoJson.resetStyle(e.target);
 };
 
 const zoomToFeature = (e) => {
-  map.fitBounds(e.target.getBounds());
+  map?.fitBounds(e.target.getBounds());
 };
 
 const onEachFeature = (feature, layer) => {
   layer.on({
     mouseover: (e) => {
-      highlightFeature(e);
+      highlightFeature(e)
+    },
+    click: (e) => {
       info.update(layer.feature.properties);
+      zoomToFeature;
     },
     mouseout: (e) => {
       resetHighlight(e);
-      info.update();
+      // info.update();
     },
-    click: zoomToFeature,
   });
 };
 
@@ -309,7 +305,7 @@ const initMapLoading = async (mapJsonUrl) => {
 };
 
 const mapDataLoading = (mapJsonUrl) => {
-  map.setView([0, 0], 2);
+  map?.setView([0, 0], 1);
 
   tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -326,13 +322,24 @@ const mapDataLoading = (mapJsonUrl) => {
   info.setPosition("topleft");
   yearSelectControl.setPosition("topright");
   legend.setPosition("topright");
-  map.zoomControl.setPosition("topright");
+  map?.zoomControl.setPosition("bottomleft");
 };
 
 const setupMapLoadingandListeners = () => {
+  console.log("Map loading and event listeners are running...");
+
+  // Variables
   const mapJsonUrl = "static/assets/json/map.json";
-  console.log("Map loading and evet listeners are running...");
-  mapDataLoading(mapJsonUrl);
+  const mapId = "map";
+
+  const mapElement = document.getElementById(mapId);
+  
+  if (mapElement) {
+    // Initialize Map
+    map = L.map("map");
+    // Loading
+    mapDataLoading(mapJsonUrl);
+  }
 };
 
 setupMapLoadingandListeners();

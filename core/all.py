@@ -22,10 +22,9 @@ def preprocess_suicide_data(input_file, output_file):
 
   # Pivot the data to have 'male' and 'female' as columns
   df_sex_pivot = df_sex.pivot(index=['country', 'year'], columns='sex', values='suicides_no').reset_index()
-  df_sex_pivot.columns.name = None  # Remove the column name level
-  df_sex_pivot = df_sex_pivot.fillna(0)  # Fill missing values with 0
+  df_sex_pivot.columns.name = None  
+  df_sex_pivot = df_sex_pivot.fillna(0) 
 
-  # Aggregate data by country, year, and age
   df_age = df.groupby(['country', 'year', 'age'])['suicides_no'].sum().reset_index()
 
   # Pivot the data to have age groups as columns
@@ -52,7 +51,7 @@ def preprocess_suicide_data(input_file, output_file):
 
   # Calculate the totals for "All" years (1985-2016) for each country
   df_total_per_country = df_filtered.groupby('name').sum(numeric_only=True).reset_index()
-  df_total_per_country['year'] = 'All'  # Set the year to 'All' for these rows
+  df_total_per_country['year'] = 'All'  
 
   # Calculate the total for all countries across all years
   df_total_all = df_filtered.groupby(['name']).sum(numeric_only=True).sum().to_frame().T
@@ -69,7 +68,6 @@ def preprocess_suicide_data(input_file, output_file):
   # Write the preprocessed data to the output file
   df_final_with_total.to_csv(output_file, index=False)
 
-# Example usage
 input_file = os.path.join(INIT_PATH, "core", "who_suicide_statistics.csv")
 output_file = os.path.join(INIT_PATH, "core", "preprocessed.csv")
 preprocess_suicide_data(input_file, output_file)

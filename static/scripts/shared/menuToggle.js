@@ -2,7 +2,7 @@
  * Menu Toggle
  */
 
-import { attachClickHandlerById } from "./eventHandlers.js";
+import { attachEventHandlerById } from "./eventHandlers.js";
 
 function switchMenuIconSrc(menuSrc) {
   return menuSrc.includes("menu.svg")
@@ -21,5 +21,5 @@ function handleMenu() {
 
 export function setupToggleListeners() {
   console.log("Common toggle event listeners are running...");
-  attachClickHandlerById("menu-btn", handleMenu);
+  attachEventHandlerById("menu-btn", "click", handleMenu)
 }

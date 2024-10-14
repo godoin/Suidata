@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="900"
+   height="600"
+   viewBox="0 0 9 6"
+   version="1.1"
+   id="svg20"
+   sodipodi:docname="Flag_of_South_Africa (WFB 2004).svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs24" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview22"
+     showgrid="false"
+     inkscape:zoom="0.63111111"
+     inkscape:cx="450"
+     inkscape:cy="300"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg20" />
+  <clipPath
+     id="Z">
+    <path
+       d="M0,0 4.5,3 0,6"
+       id="X" />
+  </clipPath>
+  <clipPath
+     id="A">
+    <path
+       d="M0,0H9V6H0z"
+       id="path4" />
+  </clipPath>
+  <g
+     clip-path="url(#A)"
+     id="g18">
+    <path
+       d="M 0,0 V 6 H 9 V 0 Z"
+       id="path7"
+       inkscape:connector-curvature="0"
+       style="fill:#3b5aa3;fill-opacity:1" />
+    <path
+       d="M 0,0 V 3 H 9 V 0 Z"
+       id="path9"
+       inkscape:connector-curvature="0"
+       style="fill:#be0027;fill-opacity:1" />
+    <g
+       id="g14"
+       style="stroke:#ffffff;stroke-width:2">
+      <path
+         d="M 0,0 4.5,3 0,6 M 4.5,3 H 9"
+         id="W"
+         inkscape:connector-curvature="0" />
+      <use
+         xlink:href="#X"
+         clip-path="url(#Z)"
+         id="use12"
+         style="stroke:#f7f409;stroke-opacity:1"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <use
+       xlink:href="#W"
+       id="use16"
+       style="fill:none;stroke:#239e46;stroke-width:1.20000005;stroke-opacity:1"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+</svg>

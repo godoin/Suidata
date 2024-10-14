@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ title_page }}</title>
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/logo.png') }}" type="image/x-icon"/>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="static/assets/css/global.css "/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layouts.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/data.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+    
+    <!-- Script Links -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="container">
+                <!-- Left Content -->
+                <section class="left-content">
+                <a href="/" class="logo-wrapper">
+                    <img
+                    src="{{ url_for('static', filename='assets/images/logo.png') }}"
+                    alt="Suidata"
+                    />
+                    <span class="title">Suidata</span>
+                </a>
+                </section>
+            
+                <!-- Right Content -->
+                <div class="right-content">
+                <ul class="nav-items" id="nav-items">
+                    <a href="/" class="nav-item">Home</a>
+                    <a href="/dashboard" class="nav-item">Dashboard</a>
+                    <a href="/map" class="nav-item">Map</a>
+                    <a href="/data" class="nav-item">Data</a>
+                    <li class="actions">
+                    <a href="/map" class="button primary">Explore Map</a>
+                    </li>
+                </ul>
+                <button class="ghost menu" id="menu-btn">
+                    <img
+                    src="static/assets/images/icons/menu.svg"
+                    alt="Menu"
+                    width="20"
+                    id="menu-icon"
+                    class="menu-icon"
+                    />
+                </button>
+                </div>
+            </div>
+        </nav>
+
+
+
+        <footer>
+            <!-- Top Content -->
+            <div class="top">
+                <div class="left-content">
+                    <a href="/" class="logo-wrapper">
+                    <img
+                        src="{{ url_for('static', filename='assets/images/logo_dark.png') }}"
+                        alt="Suidata"
+                    />
+                    <span class="title">Suidata</span>
+                    </a>
+                </div>
+                
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/data">Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/map">Map</a>
+                    </li>
+                </ul>
+                
+                <div class="right-content">
+                    <a href="" class="button primary">Explore Map</a>
+                </div>
+            </div>
+
+            <div class="bottom">
+                Copyright &copy; 2024. Suidata
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script
+      src="{{ url_for('static', filename='scripts/index.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/shared/eventHandlers.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/shared/menuToggle.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/data/data.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/data/filters.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/map/map.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/map/mapUtils.js') }}"
+      type="module"
+    ></script>
+    <script
+      src="{{ url_for('static', filename='scripts/dashboard/dashboard.js') }}"
+      type="module"
+    ></script>
+  </body>
+</html>

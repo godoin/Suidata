@@ -4,11 +4,21 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="wrapper">
-      <img src="static/assets/images/world.png" class="world-img" alt="" />
+      <picture class="image">
+        <source srcset="/static/assets/webp/world.webp" class="world-img" type="image/webp">
+        <img 
+          class="world-img"
+          loading="eager" 
+          role="presentation" 
+          src="/static/assets/images/world.png"
+          decoding="sync"
+          fetchpriority="high"
+          sizes=""/>
+      </picture>
 
       <header>
         <h1 class="title main">
-          A Data-Driven Journey Through Four Decades of Global Suicide
+          A Data-Driven Journey Through Four Decades of Global Mortality
         </h1>
         <div class="description">
           <p>
@@ -40,7 +50,17 @@
   </section>
 
   <section class="scope">
-    <img src="static/assets/images/south_america.png" class="left-img" alt="" />
+    <picture class="image">
+      <source srcset="/static/assets/webp/south_america.webp" class="left-img" type="image/webp">
+      <img 
+        class="left-img"
+        loading="lazy" 
+        role="presentation" 
+        src="/static/assets/images/south_america.png"
+        decoding="async"
+        fetchpriority="low"
+        sizes=""/>
+    </picture>
     <div class="content">
       <h2 class="title">Scope and Limtations</h2>
       <p class="description">
@@ -58,7 +78,7 @@
     <header>
       <h2 class="title">
         Data speaks louder than words, know the ins and outs of suicide, a
-        leading cause of early mortality
+        leading cause of early mortality
       </h2>
     </header>
     <div class="content">
@@ -69,11 +89,17 @@
             suicide through visualization.
           </p>
           <div class="visual">
-            <img
-              src="static/assets/images/informed_decision.png"
-              class="visual"
-              alt=""
-            />
+            <picture class="image">
+              <source srcset="/static/assets/webp/informed_decision.webp" class="visual-img" type="image/webp">
+              <img 
+                class="visual-img"
+                loading="lazy" 
+                role="presentation" 
+                src="/static/assets/images/informed_decision.png"
+                decoding="async"
+                fetchpriority="high"
+                sizes=""/>
+            </picture>
           </div>
         </div>
         <div class="card inspire">
@@ -82,11 +108,17 @@
             prevention.
           </p>
           <div class="visual">
-            <img
-              src="static/assets/images/conference_speaker.png"
-              class="visual"
-              alt=""
-            />
+            <picture class="image">
+              <source srcset="/static/assets/webp/conference_speaker.webp" class="visual" type="image/webp">
+              <img 
+                class="visual"
+                loading="lazy" 
+                role="presentation" 
+                src="/static/assets/images/conference_speaker.png"
+                decoding="async"
+                fetchpriority="high"
+                sizes=""/>
+            </picture>
           </div>
         </div>
       </div>
@@ -97,7 +129,17 @@
             prevention strategies for people.
           </p>
           <div class="visual">
-            <img src="static/assets/images/buffer.png" class="visual" alt="" />
+            <picture class="image">
+              <source srcset="/static/assets/webp/buffer.webp" class="visual" type="image/webp">
+              <img 
+                class="visual"
+                loading="lazy" 
+                role="presentation" 
+                src="/static/assets/images/buffer.png"
+                decoding="async"
+                fetchpriority="high"
+                sizes=""/>
+            </picture>
           </div>
         </div>
         <div class="card awareness">
@@ -150,8 +192,8 @@
         </p>
       </header>
       <div class="actions">
-        <a href="" class="button primary">View Dashboard</a>
-        <a href="" class="button secondary">Explore Map</a>
+        <a href="/dashboard" class="button primary">View Dashboard</a>
+        <a href="/map" class="button secondary">Explore Map</a>
       </div>
     </div>
   </section>

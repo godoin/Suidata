@@ -64,7 +64,7 @@ button:hover,
 .icon.like > i,
 .icon.like > .fa-heart {
   color: var(--red-500);
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 .icon:hover {
@@ -76,7 +76,7 @@ button:hover,
 }
 
 .outline {
-  background-color: var(--gray-100);
+  background-color: var(--gray-50);
   color: var(--sky-500);
   border: 1px solid var(--gray-300);
   padding: 0.6em;

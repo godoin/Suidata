@@ -3,65 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title_page }}</title>
-    <!-- <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-      rel="stylesheet"
-    /> -->
-    <link
-      rel="icon"
-      href="{{ url_for('static', filename='assets/images/logo.png') }}"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/global.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/common.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/layouts.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/map.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/about.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/data.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/dashboard.css') }}"
-    />
+    <title>Suidata | Expore Global Mortality</title>
+    <link rel="shortcut icon" href="/static/assets/images/logo.png" type="image/x-icon">
+    <link rel="canonical" href="https://suidata.pages.dev/">
+    <!-- Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Site Meta -->
+    <meta name="description" content="Explore interactive visualizations of suicide statistics from 1979 to 2016, based on data from Kaggle and the WHO. Analyze trends, filter by country, and gain insights into this critical issue.">
+    <meta name="keywords" content="suicide statistics, data visualization, mental health, WHO, Kaggle, interactive map, charts, data analysis, global health"> 
+    <meta property="og:title" content="Interactive Suicide Statistics Visualization">
+    <meta property="og:description" content="Explore interactive visualizations of suicide statistics from 1979 to 2016, based on data from Kaggle and the WHO.">
+    <meta property="og:image" content="/static/assets/images/suidata_front.png"> 
+    <meta property="og:url" content="https://suidata.pages.dev/"> 
 
-    <script
-      src="https://kit.fontawesome.com/84e2199ce0.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layouts.css') }}" type="text/css" fetchpriority="high" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" type="text/css" fetchpriority="high" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}" type="text/css" fetchpriority="low" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/data.css') }}" type="text/css" fetchpriority="low" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" type="text/css" fetchpriority="low" />
+
+    <!-- Prefetch Links -->
+    <link rel="prefetch" href="{{ url_for('static', filename='css/map.css') }}" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="{{ url_for('static', filename='css/about.css') }}" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="{{ url_for('static', filename='css/data.css') }}" as="style" fetchpriority="low" />
+    <link rel="prefetch" href="{{ url_for('static', filename='css/dashboard.css') }}" as="style" fetchpriority="low" />
+
+    <link rel="prefetch" href="/" as="document" fetchpriority="low" /> 
+    <link rel="prefetch" href="/map" as="document" fetchpriority="low" /> 
+    <link rel="prefetch" href="/data" as="document" fetchpriority="low" /> 
+    <link rel="prefetch" href="/dashboard" as="document" fetchpriority="low" />
+
+    <!-- Module Links -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" fetchpriority="low" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" fetchpriority="low"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" fetchpriority="low"></script>
+
+    <!-- Prefetch Module Links -->
+    <link rel="prefetch" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" as="script" /> 
+    <link rel="prefetch" href="https://cdn.jsdelivr.net/npm/apexcharts" as="script" /> 
   </head>
   <body>
     <div class="container">
@@ -69,46 +54,15 @@
       include 'layouts/footer.html' %}
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script
-      src="{{ url_for('static', filename='scripts/index.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/shared/eventHandlers.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/shared/menuToggle.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/data/data.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/shared/apiUtils.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/data/filters.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/map/map.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/map/mapUtils.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/dashboard/dashboard.js') }}"
-      type="module"
-    ></script>
-    <script
-      src="{{ url_for('static', filename='scripts/charts/line-chart.js') }}"
-      type="module"
-    ></script>
+    <!-- Scripts Js -->
+    <script rel="preload" src="{{ url_for('static', filename='scripts/index.js') }}" type="module" fetchpriority="high"></script>
+    <script rel="preload" src="{{ url_for('static', filename='scripts/shared/eventHandlers.js') }}" type="module" fetchpriority="high"></script>
+    <script rel="preload" src="{{ url_for('static', filename='scripts/shared/menuToggle.js') }}" type="module" fetchpriority="high"></script>
+
+    <script rel="prefetch" src="{{ url_for('static', filename='scripts/data/data.js') }}" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="{{ url_for('static', filename='scripts/data/filters.js') }}" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="{{ url_for('static', filename='scripts/map/map.js') }}" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="{{ url_for('static', filename='scripts/map/mapUtils.js') }}" type="module" fetchpriority="low"></script>
+    <script rel="prefetch" src="{{ url_for('static', filename='scripts/dashboard/dashboard.js') }}" type="module" fetchpriority="low"></script>
   </body>
 </html>

@@ -6,8 +6,8 @@ A final data visualization project in fulfillment for the requirements of COMPSC
 
 ## Installation
 
-- Please download Python v3.8.0 or above.
-- Open your terminal and clone this repository using `git clone https://github.com/godoin/Suidata` or `gh repo clone godoin/Suidata`
+- Please download specifically Python v3.8.0
+- Open your terminal and clone this repository using `git clone https://github.com/godoin/StableEye` or `gh repo clone godoin/StableEye`
 - Create virtual environment (optional):
   - use `python3 -m venv .venv`
 - Run virtual environment (optional):
@@ -25,4 +25,4 @@ Szamil. (2018). WHO Suicide Statistics, v1.0. Retrieved May 10, 2024, from https
 
 ## License
 
-This project is under the MIT License.
+This project is not licensed yet under the MIT License.

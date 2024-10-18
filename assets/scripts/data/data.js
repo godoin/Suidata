@@ -135,7 +135,7 @@ export const setupDataLoadingAndListeners = () => {
   console.log("Data event loading and listeners are running...");
 
   // Variables
-  const jsonUrl = "static/assets/json/data.json";
+  const jsonUrl = "assets/json/data.json";
   const tableBodyId = "table-body";
 
   const yearSelectedId = "data-year-select";

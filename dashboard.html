@@ -33,9 +33,9 @@
     <link rel="prefetch" href="/assets/css/dashboard.css" as="style" fetchpriority="low" />
 
     <link rel="prefetch" href="/" as="document" fetchpriority="low" />
-    <link rel="prefetch" href="/map" as="document" fetchpriority="low" />
-    <link rel="prefetch" href="/data" as="document" fetchpriority="low" />
-    <link rel="prefetch" href="/dashboard" as="document" fetchpriority="low" />
+    <link rel="prefetch" href="/map.html" as="document" fetchpriority="low" />
+    <link rel="prefetch" href="/data.html" as="document" fetchpriority="low" />
+    <link rel="prefetch" href="/dashboard.html" as="document" fetchpriority="low" />
 
     <!-- Module Links -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" fetchpriority="low" />
@@ -49,6 +49,69 @@
 
   <body>
     <div class="container">
+      <div class="overlay" id="overlay"></div>
+      <dialog id="introProject">
+        <div class="wrapper">
+          <button class="ghost" id="closeIntroProject">
+            <img src="/assets/images/icons/x-close-white.svg" alt="Close Modal">
+          </button>
+          <div class="left-content">
+            <div class="group">
+              <div class="logo-wrapper">
+                <img
+                  src="/assets/images/logo.svg"
+                  alt="Suidata"
+                  height="48"
+                  width="48"
+                />
+                <span class="title">Suidata</span>
+              </div>
+              <header>
+                <h1 class="title">Suidata | Explore Global Mortality <br/> 1979-2016</h1>
+                <p class="description">This is a revamped project that was a requirement for CSE3 Analytics Programming. Mainly to preprocess and visualize data but in the web.</p>
+                <p class="description">
+                  Thanks to Larry Tesler for creating the <kbd>Ctrl</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>V</kbd> otherwise I would have got a stroke from annotating the map and mortality dataset.
+                </p>
+              </header>
+            </div>
+            <div class="special-thanks">
+              <span class="title">Tools Used</span>
+              <ul class="list">
+                <li class="item-description">
+                  GADM Dataset
+                </li>
+                <li class="item-description">
+                  World-geojson by AlexGouget
+                </li>
+                <li class="item-description">
+                  Map simplification: Mapshaper
+                </li>
+              </ul>
+            </div>
+            <div class="group">
+              <p class="disclaimer">
+                <span class="warn">Disclaimer: </span>This project is for non-commercial purposes only and was created as a fun way to practice map APIs and data visualization techniques.
+              </p>
+              <p class="created-by">
+                Created by: <a href="https://godwin-duliente.pages.dev/">Godwin Duliente</a>
+              </p>
+            </div>
+          </div>
+          <div class="right-content">
+            <picture class="image">
+              <source srcset="/assets/webp/suidata_bg.webp" class="visual-img" type="image/webp">
+              <img 
+                class="visual-img"
+                loading="eager" 
+                role="presentation" 
+                src="/assets/images/suidata_bg.png"
+                decoding="sync"
+                fetchpriority="high"
+                sizes=""/>
+            </picture>
+          </div>
+        </div>
+      </dialog>
         <nav class="navbar">
             <div class="container">
                 <!-- Left Content -->
@@ -217,20 +280,88 @@
 
           <div class="right-content">
             <header>
-              <span class="title">Highest Mortality Rates: Top 10 Countries</span>
+              <!-- <i class="fa-regular fa-circle-question"></i> -->
+              <span class="title">World Map</span>
             </header>
-
-            <div class="column group countries">
-              <span class="item">Brazil</span>
-              <span class="item">Brazil</span>
-              <span class="item">Mexico</span>
-              <span class="item">United States</span>
-              <span class="item">Argentina</span>
-              <span class="item">Brazil</span>
-              <span class="item">Japan</span>
-              <span class="item">India</span>
-              <span class="item">Russia</span>
-              <span class="item">Italy</span>
+            <div class="map-wrapper">
+              <div id="dashboardMap"></div>
+            </div>
+            <header>
+              <h2 class="title">Highest Mortality Rates: Top 10 Countries</h2>
+            </header>
+            <div class="bar-graphs" id="mortality-countries">
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
+              <div class="group">
+                <div class="detail">
+                  <span class="name">Brazil</span>
+                  <span class="value">1576203</span>
+                </div>
+                <div class="bar" id="">
+                  <div class="percentage"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

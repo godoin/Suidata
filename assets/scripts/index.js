@@ -11,6 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.setItem('introProjectShown', true);
   }
   window.addEventListener("beforeunload", () => {
-    sessionStorage.removeItem('introProjectShown');
+    // sessionStorage.removeItem('introProjectShown');
   })
 });

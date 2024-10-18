@@ -5,7 +5,7 @@
 let currentSortColumn = null;
 
 async function runSortTest(event) {
-  const jsonUrl = "static/assets/json/data.json";
+  const jsonUrl = "assets/json/data.json";
   let currentSortOrder = "asc";
   const clickedHeader = event.target.closest("th");
   const columnId = clickedHeader.id;

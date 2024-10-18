@@ -46,7 +46,7 @@ const onEachFeature = (feature, layer) => {
 };
 
 const getColor = async (name) => {
-  const jsonUrl = "static/assets/json/data.json";
+  const jsonUrl = "assets/json/data.json";
   const country = await fetch(jsonUrl)
     .then((res) => res.json())
     .then((data) => data.find((country) => country.name === name))
@@ -239,7 +239,7 @@ info.onAdd = function (map) {
 };
 
 info.update = async function (props) {
-  const jsonUrl = "static/assets/json/data.json";
+  const jsonUrl = "assets/json/data.json";
 
   if (props && props.name) {
     const country = await fetch(jsonUrl)
@@ -329,7 +329,7 @@ const setupMapLoadingandListeners = () => {
   console.log("Map loading and event listeners are running...");
 
   // Variables
-  const mapJsonUrl = "static/assets/json/map.json";
+  const mapJsonUrl = "assets/json/map.json";
   const mapId = "map";
 
   const mapElement = document.getElementById(mapId);

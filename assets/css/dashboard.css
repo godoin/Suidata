@@ -52,14 +52,14 @@
 }
 
 @media (min-width: 728px) {
-  .dashboard-container .content .right-content {
-    max-width: 28em;
-  }
 }
 
 @media (min-width: 1024px) {
   .dashboard-container .content {
     flex-direction: row;
+  }
+  .dashboard-container .content .right-content {
+    max-width: 28em;
   }
 }
 

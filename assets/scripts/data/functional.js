@@ -82,5 +82,5 @@ const initializeDataLoading = async (jsonUrl, tableBodyId) => {
 export const setupDataLoadingAndListeners = () => {
   console.log("Data event loading and listeners are running...");
 
-  initializeDataLoading("static/assets/json/data.json", "table-body");
+  initializeDataLoading("assets/json/data.json", "table-body");
 };

@@ -274,8 +274,8 @@ const lineGraphDataLoading = async (dataJsonUrl) => {
 };
 
 const handleYearUpdate = (event) => {
-  const mapJsonUrl = "static/assets/json/map.json";
-  const dataJsonUrl = "static/assets/json/data.json";
+  const mapJsonUrl = "assets/json/map.json";
+  const dataJsonUrl = "assets/json/data.json";
 
   selectedDashYear = parseInt(event.target.value, 10);
 
@@ -288,8 +288,8 @@ const handleYearUpdate = (event) => {
 
 const setupDashboardLoadingandListeners = () => {
   console.log(`Dashboard loading and event listeners are running...`);
-  const mapJsonUrl = "static/assets/json/map.json";
-  const dataJsonUrl = "static/assets/json/data.json";
+  const mapJsonUrl = "assets/json/map.json";
+  const dataJsonUrl = "assets/json/data.json";
   const selectYear = "year-select";
   const dashboardMapId = "dashboardMap"
   

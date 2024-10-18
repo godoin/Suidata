@@ -51,6 +51,69 @@
   </head>
   <body>
     <div class="container">
+      <div class="overlay" id="overlay"></div>
+      <dialog id="introProject">
+        <div class="wrapper">
+          <button class="ghost" id="closeIntroProject">
+            <img src="/assets/images/icons/x-close-white.svg" alt="Close Modal">
+          </button>
+          <div class="left-content">
+            <div class="group">
+              <div class="logo-wrapper">
+                <img
+                  src="/assets/images/logo.svg"
+                  alt="Suidata"
+                  height="48"
+                  width="48"
+                />
+                <span class="title">Suidata</span>
+              </div>
+              <header>
+                <h1 class="title">Suidata | Explore Global Mortality <br/> 1979-2016</h1>
+                <p class="description">This is a revamped project that was a requirement for CSE3 Analytics Programming. Mainly to preprocess and visualize data but in the web.</p>
+                <p class="description">
+                  Thanks to Larry Tesler for creating the <kbd>Ctrl</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>V</kbd> otherwise I would have got a stroke from annotating the map and mortality dataset.
+                </p>
+              </header>
+            </div>
+            <div class="special-thanks">
+              <span class="title">Tools Used</span>
+              <ul class="list">
+                <li class="item-description">
+                  GADM Dataset
+                </li>
+                <li class="item-description">
+                  World-geojson by AlexGouget
+                </li>
+                <li class="item-description">
+                  Map simplification: Mapshaper
+                </li>
+              </ul>
+            </div>
+            <div class="group">
+              <p class="disclaimer">
+                <span class="warn">Disclaimer: </span>This project is for non-commercial purposes only and was created as a fun way to practice map APIs and data visualization techniques.
+              </p>
+              <p class="created-by">
+                Created by: <a href="https://godwin-duliente.pages.dev/">Godwin Duliente</a>
+              </p>
+            </div>
+          </div>
+          <div class="right-content">
+            <picture class="image">
+              <source srcset="/assets/webp/suidata_bg.webp" class="visual-img" type="image/webp">
+              <img 
+                class="visual-img"
+                loading="eager" 
+                role="presentation" 
+                src="/assets/images/suidata_bg.png"
+                decoding="sync"
+                fetchpriority="high"
+                sizes=""/>
+            </picture>
+          </div>
+        </div>
+      </dialog>
         <nav class="navbar">
             <div class="container">
                 <!-- Left Content -->
@@ -158,13 +221,13 @@
                 <th class="header" scope="col" id="name">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/flag.svg"
+                        src="assets/images/icons/flag.svg"
                         alt="Country flag"
                     />
                     <p class="title">Country</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -173,13 +236,13 @@
                 <th class="header" scope="col" id="year">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/clock.svg"
+                        src="assets/images/icons/clock.svg"
                         alt="Clock icon"
                     />
                     <p class="title">Year</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -188,13 +251,13 @@
                 <th class="header" scope="col" id="male">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">Male</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -203,13 +266,13 @@
                 <th class="header" scope="col" id="female">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">Female</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -218,13 +281,13 @@
                 <th class="header" scope="col" id="5-14 years">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">5-14 Years</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -233,13 +296,13 @@
                 <th class="header" scope="col" id="15-24 years">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">15-24 Years</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -248,13 +311,13 @@
                 <th class="header" scope="col" id="25-34 years">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">25-34 Years</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -263,13 +326,13 @@
                 <th class="header" scope="col" id="35-54 years">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">35-54 Years</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -278,13 +341,13 @@
                 <th class="header" scope="col" id="55-74 years">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">55-74 Years</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -293,13 +356,13 @@
                 <th class="header" scope="col" id="75+ years">
                     <div class="group">
                     <img
-                        src="static/assets/images/icons/group.svg"
+                        src="assets/images/icons/group.svg"
                         alt="Group icon"
                     />
                     <p class="title">75+ Years</p>
                     </div>
                     <!-- <img
-                    src="static/assets/images/icons/chevron-selector-vertical.svg"
+                    src="assets/images/icons/chevron-selector-vertical.svg"
                     alt="Sort"
                     width="32"
                     height="32"
@@ -311,7 +374,7 @@
                 <tr class="row-data">
                 <td class="data">
                     <div class="group">
-                    <img src="static/assets/images/flags/united_kingdom.svg" width="60" height="30" alt="" />
+                    <img src="assets/images/flags/united_kingdom.svg" width="60" height="30" alt="" />
                     <span class="text">United Kingdom</span>
                     </div>
                 </td>

@@ -6,8 +6,8 @@ import { attachEventHandlerById } from "./eventHandlers.js";
 
 function switchMenuIconSrc(menuSrc) {
   return menuSrc.includes("menu.svg")
-    ? "static/assets/images/icons/x-close.svg"
-    : "static/assets/images/icons/menu.svg";
+    ? "assets/images/icons/x-close.svg"
+    : "assets/images/icons/menu.svg";
 }
 
 function handleMenu() {

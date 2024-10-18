@@ -1,213 +1,31 @@
-let map;
-let tiles;
-let info = L.control();
-let legend = L.control();
-let yearSelectControl = L.control();
-let selectedMapYear = "";
-let geoJson;
-
-const highlightFeature = (e) => {
-  var layer = e.target;
-
-  layer.setStyle({
-    weight: 5,
-    color: "#666",
-    dashArray: "",
-    fillOpacity: 0.7,
-  });
-
-  layer.bringToFront();
-};
-
-const resetHighlight = (e) => {
-  // const originalStyle = style(e.target.feature);
-  // e.target.setStyle(originalStyle);
-  geoJson.resetStyle(e.target);
-};
-
-const zoomToFeature = (e) => {
-  map?.fitBounds(e.target.getBounds());
-};
-
-const onEachFeature = (feature, layer) => {
-  layer.on({
-    mouseover: (e) => {
-      highlightFeature(e)
-    },
-    click: (e) => {
-      info.update(layer.feature.properties);
-      zoomToFeature;
-    },
-    mouseout: (e) => {
-      resetHighlight(e);
-      // info.update();
-    },
-  });
-};
-
-const getColor = async (name) => {
-  const jsonUrl = "assets/json/data.json";
-  const country = await fetch(jsonUrl)
-    .then((res) => res.json())
-    .then((data) => data.find((country) => country.name === name))
-    .catch((err) => console.error(`Error fetching data: ${err}..`));
-
-  const mortality = country?.total_mortality || 0;
-
-  return mortality > 750000
-    ? "#082f49"
-    : mortality > 500000
-    ? "#0c4a6e"
-    : mortality > 250000
-    ? "#075985"
-    : mortality > 100000
-    ? "#0369a1"
-    : mortality > 50000
-    ? "#0284c7"
-    : mortality > 25000
-    ? "#0ea5e9"
-    : mortality > 10000
-    ? "#38bdf8"
-    : mortality > 5000
-    ? "#7dd3fc"
-    : mortality > 1000
-    ? "#e0f2fe"
-    : "#f0f9ff";
-};
-
-const standardLegendColors = (mortality) => {
-  return mortality > 750000
-    ? "#082f49"
-    : mortality > 500000
-    ? "#0c4a6e"
-    : mortality > 250000
-    ? "#075985"
-    : mortality > 100000
-    ? "#0369a1"
-    : mortality > 50000
-    ? "#0284c7"
-    : mortality > 25000
-    ? "#0ea5e9"
-    : mortality > 10000
-    ? "#38bdf8"
-    : mortality > 5000
-    ? "#7dd3fc"
-    : mortality > 1000
-    ? "#e0f2fe"
-    : "#f0f9ff";
-};
-
-const style = async (feature) => {
-  const color = await getColor(feature.properties.name);
-
-  return {
-    fillColor: color,
-    weight: 2,
-    opacity: 1,
-    color: "white",
-    dashArray: "3",
-    fillOpacity: 0.7,
-  };
-};
-
-const renderCardData = (country) => {
-  const defaultValues = {
-    total_mortality: 0,
-    male: 0,
-    female: 0,
-    age_group_5_to_14: 0,
-    age_group_15_to_24: 0,
-    age_group_25_to_34: 0,
-    age_group_35_to_54: 0,
-    age_group_55_to_74: 0,
-    age_group_75_plus: 0,
-  };
-
-  const safeCountry = country || defaultValues;
-
-  const total = Object.values(safeCountry)
-    .filter((value) => typeof value === "number")
-    .reduce((sum, value) => sum + value, 0);
-
-  const calculatePercentage = (value) =>
-    ((value / total) * 100).toFixed(2) || 0;
-
-  const percentages = {
-    male: calculatePercentage(safeCountry.male),
-    female: calculatePercentage(safeCountry.female),
-    age_group_5_to_14: calculatePercentage(safeCountry.age_group_5_to_14),
-    age_group_15_to_24: calculatePercentage(safeCountry.age_group_15_to_24),
-    age_group_25_to_34: calculatePercentage(safeCountry.age_group_25_to_34),
-    age_group_35_to_54: calculatePercentage(safeCountry.age_group_35_to_54),
-    age_group_55_to_74: calculatePercentage(safeCountry.age_group_55_to_74),
-    age_group_75_plus: calculatePercentage(safeCountry.age_group_75_plus),
-  };
-
-  return `
+let map,tiles,info=L.control(),legend=L.control(),yearSelectControl=L.control(),selectedMapYear="",geoJson;const highlightFeature=e=>{var a=e.target;a.setStyle({weight:5,color:"#666",dashArray:"",fillOpacity:.7}),a.bringToFront()},resetHighlight=e=>{geoJson.resetStyle(e.target)},zoomToFeature=e=>{map?.fitBounds(e.target.getBounds())},onEachFeature=(e,a)=>{a.on({mouseover(e){highlightFeature(e)},click(e){info.update(a.feature.properties)},mouseout(e){resetHighlight(e)}})},getColor=async e=>{let a=await fetch("assets/json/data.json").then(e=>e.json()).then(a=>a.find(a=>a.name===e)).catch(e=>console.error(`Error fetching data: ${e}..`)),t=a?.total_mortality||0;return t>75e4?"#082f49":t>5e5?"#0c4a6e":t>25e4?"#075985":t>1e5?"#0369a1":t>5e4?"#0284c7":t>25e3?"#0ea5e9":t>1e4?"#38bdf8":t>5e3?"#7dd3fc":t>1e3?"#e0f2fe":"#f0f9ff"},standardLegendColors=e=>e>75e4?"#082f49":e>5e5?"#0c4a6e":e>25e4?"#075985":e>1e5?"#0369a1":e>5e4?"#0284c7":e>25e3?"#0ea5e9":e>1e4?"#38bdf8":e>5e3?"#7dd3fc":e>1e3?"#e0f2fe":"#f0f9ff",style=async e=>{let a=await getColor(e.properties.name);return{fillColor:a,weight:2,opacity:1,color:"white",dashArray:"3",fillOpacity:.7}},renderCardData=e=>{let a={total_mortality:0,male:0,female:0,age_group_5_to_14:0,age_group_15_to_24:0,age_group_25_to_34:0,age_group_35_to_54:0,age_group_55_to_74:0,age_group_75_plus:0},t=e||a,o=Object.values(t).filter(e=>"number"==typeof e).reduce((e,a)=>e+a,0),r=e=>(e/o*100).toFixed(2)||0,n={male:r(t.male),female:r(t.female),age_group_5_to_14:r(t.age_group_5_to_14),age_group_15_to_24:r(t.age_group_15_to_24),age_group_25_to_34:r(t.age_group_25_to_34),age_group_35_to_54:r(t.age_group_35_to_54),age_group_55_to_74:r(t.age_group_55_to_74),age_group_75_plus:r(t.age_group_75_plus)};return`
     <header>
-      <h1 class="title">${
-        safeCountry.name === "" ? "All Countries" : safeCountry.name || "N/A"
-      }</h1>
-      <span class="value">${safeCountry.total_mortality || "N/A"}</span>
+      <h1 class="title">${""===t.name?"All Countries":t.name||"N/A"}</h1>
+      <span class="value">${t.total_mortality||"N/A"}</span>
     </header>
     <div class="content">
       <section class="sex">
         <h2>Sex</h2>
-          ${renderGroup("Male", safeCountry.male, percentages.male)}
-          ${renderGroup("Female", safeCountry.female, percentages.female)}
+          ${renderGroup("Male",t.male,n.male)}
+          ${renderGroup("Female",t.female,n.female)}
       </section>
       <section class="age">
         <h2>Age Groups</h2>
-          ${Object.entries(percentages)
-            .filter(([key]) => key.startsWith("age_group_"))
-            .map(([key, percentage]) =>
-              renderGroup(
-                key.replace(/_/g, "-").replace("age-group-", "") + " years",
-                safeCountry[key],
-                percentage
-              )
-            )
-            .join("")} 
+          ${Object.entries(n).filter(([e])=>e.startsWith("age_group_")).map(([e,a])=>renderGroup(e.replace(/_/g,"-").replace("age-group-","")+" years",t[e],a)).join("")} 
       </section>
       <section id="mortality-countries"></section>
     </div>
-  `;
-};
-
-const renderGroup = (name, value, percentage) => `
+  `},renderGroup=(e,a,t)=>`
   <div class="group">
     <div class="detail">
-        <span class="name">${name}</span>
-        <span class="value">${value || "N/A"}</span>
+        <span class="name">${e}</span>
+        <span class="value">${a||"N/A"}</span>
     </div>
-    <div class="bar" id="${name.toLowerCase().replace(/\s+/g, "")}">
-        <div class="percentage" style="width: ${percentage}%;"></div>
+    <div class="bar" id="${e.toLowerCase().replace(/\s+/g,"")}">
+        <div class="percentage" style="width: ${t}%;"></div>
     </div>
   </div>
-`;
-
-legend.onAdd = function (map) {
-  var div = L.DomUtil.create("div", "info legend"),
-    grades = [
-      0, 1000, 5000, 10000, 25000, 50000, 100000, 250000, 500000, 750000,
-    ],
-    labels = [];
-
-  for (var i = 0; i < grades.length; i++) {
-    div.innerHTML +=
-      '<i style="background:' +
-      standardLegendColors(grades[i] + 1) +
-      '"></i> ' +
-      grades[i] +
-      (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
-  }
-  return div;
-};
-
-yearSelectControl.onAdd = function (map) {
-  const container = L.DomUtil.create("div", "year-select-container");
-
-  container.innerHTML = `
+`;legend.onAdd=function(e){for(var a=L.DomUtil.create("div","info legend"),t=[0,1e3,5e3,1e4,25e3,5e4,1e5,25e4,5e5,75e4,],o=0;o<t.length;o++)a.innerHTML+='<i style="background:'+standardLegendColors(t[o]+1)+'"></i> '+t[o]+(t[o+1]?"&ndash;"+t[o+1]+"<br>":"+");return a},yearSelectControl.onAdd=function(e){let a=L.DomUtil.create("div","year-select-container");a.innerHTML=`
     <div class="actions">
       <select
         id="year-select"
@@ -216,130 +34,4 @@ yearSelectControl.onAdd = function (map) {
       >
         <option value="" checked>Filter by: All</option>
       </select>
-  `;
-
-  const yearSelect = container.querySelector("#year-select");
-
-  for (let year = 1985; year <= 2016; year++) {
-    const option = document.createElement("option");
-    option.value = year;
-    option.text = `Filter by: ${year}`;
-    yearSelect.appendChild(option);
-  }
-
-  yearSelect.addEventListener("change", handleYearUpdate);
-
-  return container;
-};
-
-info.onAdd = function (map) {
-  this._div = L.DomUtil.create("div", "data-column");
-  this.update();
-  return this._div;
-};
-
-info.update = async function (props) {
-  const jsonUrl = "assets/json/data.json";
-
-  if (props && props.name) {
-    const country = await fetch(jsonUrl)
-      .then((res) => res.json())
-      .then((data) =>
-        data.find(
-          (country) =>
-            country.name === props.name &&
-            (selectedMapYear
-              ? country.year === selectedMapYear
-              : country.year === "All")
-        )
-      )
-      .catch((err) => console.error(`Error fetching data: ${err}...`));
-    this._div.innerHTML = renderCardData(country);
-  } else {
-    const allCountriesData = await fetch(jsonUrl)
-      .then((res) => res.json())
-      .then((data) =>
-        data.find(
-          (country) =>
-            country.name === "All" &&
-            (selectedMapYear
-              ? country.year === selectedMapYear
-              : country.year === "All")
-        )
-      )
-      .catch((err) => console.error(`Error fetching data: ${err}..`));
-    this._div.innerHTML = renderCardData(allCountriesData);
-  }
-};
-
-const loadDataToMap = (data) => {
-  geoJson = L.geoJson(data, {
-    style: style,
-    onEachFeature: onEachFeature,
-  });
-  geoJson.addTo(map);
-};
-
-const updateMap = async () => {
-  geoJson.eachLayer(async function (layer) {
-    const color = await getColor(layer.feature.properties.name);
-    layer.setStyle({ fillColor: color });
-  });
-
-  info.update();
-};
-
-const handleYearUpdate = (event) => {
-  console.log(`Selected Year: ${event.target.value}`);
-
-  selectedMapYear = parseInt(event.target.value, 10);
-  updateMap();
-};
-
-const initMapLoading = async (mapJsonUrl) => {
-  const data = await fetch(mapJsonUrl)
-    .then((res) => res.json())
-    .catch((err) => console.error(`Error trying to fetch data: ${err}`));
-
-  loadDataToMap(data);
-};
-
-const mapDataLoading = (mapJsonUrl) => {
-  map?.setView([0, 0], 1);
-
-  tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  }).addTo(map);
-
-  initMapLoading(mapJsonUrl);
-
-  info.addTo(map);
-  legend.addTo(map);
-  yearSelectControl.addTo(map);
-
-  info.setPosition("topleft");
-  yearSelectControl.setPosition("topright");
-  legend.setPosition("topright");
-  map?.zoomControl.setPosition("bottomleft");
-};
-
-const setupMapLoadingandListeners = () => {
-  console.log("Map loading and event listeners are running...");
-
-  // Variables
-  const mapJsonUrl = "assets/json/map.json";
-  const mapId = "map";
-
-  const mapElement = document.getElementById(mapId);
-  
-  if (mapElement) {
-    // Initialize Map
-    map = L.map("map");
-    // Loading
-    mapDataLoading(mapJsonUrl);
-  }
-};
-
-setupMapLoadingandListeners();
+  `;let t=a.querySelector("#year-select");for(let o=1985;o<=2016;o++){let r=document.createElement("option");r.value=o,r.text=`Filter by: ${o}`,t.appendChild(r)}return t.addEventListener("change",handleYearUpdate),a},info.onAdd=function(e){return this._div=L.DomUtil.create("div","data-column"),this.update(),this._div},info.update=async function(e){let a="assets/json/data.json";if(e&&e.name){let t=await fetch(a).then(e=>e.json()).then(a=>a.find(a=>a.name===e.name&&(selectedMapYear?a.year===selectedMapYear:"All"===a.year))).catch(e=>console.error(`Error fetching data: ${e}...`));this._div.innerHTML=renderCardData(t)}else{let o=await fetch(a).then(e=>e.json()).then(e=>e.find(e=>"All"===e.name&&(selectedMapYear?e.year===selectedMapYear:"All"===e.year))).catch(e=>console.error(`Error fetching data: ${e}..`));this._div.innerHTML=renderCardData(o)}};const loadDataToMap=e=>{(geoJson=L.geoJson(e,{style:style,onEachFeature:onEachFeature})).addTo(map)},updateMap=async()=>{geoJson.eachLayer(async function(e){let a=await getColor(e.feature.properties.name);e.setStyle({fillColor:a})}),info.update()},handleYearUpdate=e=>{console.log(`Selected Year: ${e.target.value}`),selectedMapYear=parseInt(e.target.value,10),updateMap()},initMapLoading=async e=>{let a=await fetch(e).then(e=>e.json()).catch(e=>console.error(`Error trying to fetch data: ${e}`));loadDataToMap(a)},mapDataLoading=e=>{map?.setView([0,0],1),tiles=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map),initMapLoading(e),info.addTo(map),legend.addTo(map),yearSelectControl.addTo(map),info.setPosition("topleft"),yearSelectControl.setPosition("topright"),legend.setPosition("topright"),map?.zoomControl.setPosition("bottomleft")},setupMapLoadingandListeners=()=>{console.log("Map loading and event listeners are running...");let e=document.getElementById("map");e&&(map=L.map("map"),mapDataLoading("assets/json/map.json"))};setupMapLoadingandListeners();

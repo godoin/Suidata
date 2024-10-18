@@ -1,159 +1,17 @@
-/**
- * Data.js
- */
-
-import {
-  attachEventHandlerById,
-} from "../shared/eventHandlers.js";
-
-let allCountries = [];
-let currentSortColumn = [];
-let isAscending = true;
-let currentPage = 1;
-const itemsPerPage = 10;
-
-const createTableDataElement = (country) => {
-  const newRowData = document.createElement("tr");
-  newRowData.classList.add("data");
-
-  const html = `
+import{attachEventHandlerById as t}from"../shared/eventHandlers.js";let allCountries=[],currentSortColumn=[],isAscending=!0,currentPage=1,itemsPerPage=10,createTableDataElement=t=>{let e=document.createElement("tr");e.classList.add("data");let a=`
     <td class="data">
       <div class="group">
-        <img src="${country.image_url}" alt="${country.name}" height="30" width="60"/>
-          ${country.name}
+        <img src="${t.image_url}" alt="${t.name}" height="30" width="60"/>
+          ${t.name}
       </div>
     </td>
-    <td class="data">${country.year}</td>
-    <td class="data">${country.male}</td>
-    <td class="data">${country.female}</td>
-    <td class="data">${country.age_group_5_to_14}</td>
-    <td class="data">${country.age_group_15_to_24}</td>
-    <td class="data">${country.age_group_25_to_34}</td>
-    <td class="data">${country.age_group_35_to_54}</td>
-    <td class="data">${country.age_group_55_to_74}</td>
-    <td class="data">${country.age_group_75_plus}</td>
-  `;
-
-  newRowData.innerHTML = html;
-
-  return newRowData;
-};
-
-const loadCountryData = (data, tableBodyIdId, page = 1) => {
-  const tableBodyId = document.getElementById(tableBodyIdId);
-  const tableContainer = tableBodyId?.closest(`.table-container`);
-
-  tableBodyId.innerHTML = "";
-
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  const pageData = data.slice(startIndex, endIndex);
-
-  const dataElements = pageData.map(createTableDataElement);
-  dataElements.forEach((element) => tableBodyId.appendChild(element));
-
-  updatePaginationButtons();
-};
-
-function updatePaginationButtons() {
-  const prevButton = document.getElementById("prev-button");
-  const nextButton = document.getElementById("next-button");
-  prevButton.disabled = currentPage === 1;
-
-  const totalPages = Math.ceil(allCountries.length / itemsPerPage);
-  nextButton.disabled = currentPage === totalPages;
-}
-
-const handlePreviousPage = () => {
-  if (currentPage > 1) {
-    currentPage--;
-    loadCountryData(allCountries, "table-body", currentPage);
-  }
-};
-
-const handleNextPage = () => {
-  const totalPages = Math.ceil(allCountries.length / itemsPerPage);
-  if (currentPage < totalPages) {
-    currentPage++;
-    loadCountryData(allCountries, "table-body", currentPage);
-  }
-};
-
-const initializeDataLoading = async (jsonUrl, tableBodyIdId) => {
-  try {
-    const res = await fetch(jsonUrl);
-
-    if (!res.ok) {
-      console.error(`Error fetching data from ${jsonUrl}`);
-      return null;
-    }
-
-    const data = await res.json();
-    loadCountryData(data, tableBodyIdId);
-    allCountries = data;
-
-    // const getAllCountries = allCountries.map((country) => country.name)
-    // const uniqueCountries = Array.from(new Set(getAllCountries));
-    // console.table(uniqueCountries);
-
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const handleSearch = (e, selectedYearId) => {
-  e.preventDefault();
-  
-  const searchTerm = e.target.value.toLowerCase();
-  const selectedYear = document.getElementById(selectedYearId).value;
-
-  const filteredCountries = allCountries
-    .filter((data) => data.name?.toLowerCase().includes(searchTerm))
-    .filter((data) => selectedYear ? data.year?.toString() === selectedYear: true);
-
-  loadCountryData(filteredCountries, "table-body");
-};
-
-const handleSorting = (e, searchTermId) => {
-  e.preventDefault();
-  const selectedYear = e.target.value;
-  const searchTerm = document.getElementById(searchTermId).value.toLowerCase();
-
-  const sortedCountries = allCountries
-    .filter((data) => searchTerm ? data.name?.toLowerCase().includes(searchTerm) : true)
-    .filter((data) => {
-        console.log(`${selectedYear} ~ ${data.year.toString()}`);
-        return data.year?.toString() === selectedYear;
-        }
-      );
-
-  loadCountryData(sortedCountries, "table-body");
-}
-
-export const setupDataLoadingAndListeners = () => {
-  console.log("Data event loading and listeners are running...");
-
-  // Variables
-  const jsonUrl = "assets/json/data.json";
-  const tableBodyId = "table-body";
-
-  const yearSelectedId = "data-year-select";
-  const searchInputId = "search-input";
-
-  const previousBtn = "prev-button";
-  const nextBtn = "next-button";
-
-  const tableBody = document.getElementById(tableBodyId);
-
-  if(tableBody) {
-    // Initializers
-    initializeDataLoading(jsonUrl, tableBodyId);
-    
-    // Event Listeners
-    attachEventHandlerById(yearSelectedId, "change", handleSorting, searchInputId);
-    attachEventHandlerById(searchInputId, "input", handleSearch, yearSelectedId);
-    attachEventHandlerById(previousBtn, "click", handlePreviousPage);
-    attachEventHandlerById(nextBtn, "click", handleNextPage);
-  }
-};
+    <td class="data">${t.year}</td>
+    <td class="data">${t.male}</td>
+    <td class="data">${t.female}</td>
+    <td class="data">${t.age_group_5_to_14}</td>
+    <td class="data">${t.age_group_15_to_24}</td>
+    <td class="data">${t.age_group_25_to_34}</td>
+    <td class="data">${t.age_group_35_to_54}</td>
+    <td class="data">${t.age_group_55_to_74}</td>
+    <td class="data">${t.age_group_75_plus}</td>
+  `;return e.innerHTML=a,e},loadCountryData=(t,e,a=1)=>{let l=document.getElementById(e);l?.closest(".table-container"),l.innerHTML="";let n=(a-1)*10,r=n+10,o=t.slice(n,r),d=o.map(createTableDataElement);d.forEach(t=>l.appendChild(t)),updatePaginationButtons()};function updatePaginationButtons(){let t=document.getElementById("prev-button"),e=document.getElementById("next-button");t.disabled=1===currentPage;let a=Math.ceil(allCountries.length/10);e.disabled=currentPage===a}let handlePreviousPage=()=>{currentPage>1&&loadCountryData(allCountries,"table-body",--currentPage)},handleNextPage=()=>{let t=Math.ceil(allCountries.length/10);currentPage<t&&loadCountryData(allCountries,"table-body",++currentPage)},initializeDataLoading=async(t,e)=>{try{let a=await fetch(t);if(!a.ok)return console.error(`Error fetching data from ${t}`),null;let l=await a.json();loadCountryData(l,e),allCountries=l}catch(n){console.error(n)}},handleSearch=(t,e)=>{t.preventDefault();let a=t.target.value.toLowerCase(),l=document.getElementById(e).value,n=allCountries.filter(t=>t.name?.toLowerCase().includes(a)).filter(t=>!l||t.year?.toString()===l);loadCountryData(n,"table-body")},handleSorting=(t,e)=>{t.preventDefault();let a=t.target.value,l=document.getElementById(e).value.toLowerCase(),n=allCountries.filter(t=>!l||t.name?.toLowerCase().includes(l)).filter(t=>(console.log(`${a} ~ ${t.year.toString()}`),t.year?.toString()===a));loadCountryData(n,"table-body")};export const setupDataLoadingAndListeners=()=>{console.log("Data event loading and listeners are running...");let e="table-body",a="data-year-select",l="search-input",n=document.getElementById(e);n&&(initializeDataLoading("assets/json/data.json",e),t(a,"change",handleSorting,l),t(l,"input",handleSearch,a),t("prev-button","click",handlePreviousPage),t("next-button","click",handleNextPage))};

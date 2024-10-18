@@ -1,16 +1,1 @@
-import { setupToggleListeners } from "./shared/menuToggle.js";
-import { setupDataLoadingAndListeners } from "./data/data.js";
-import { setupIntroduceProject } from "./shared/introProject.js";
-
-document.addEventListener("DOMContentLoaded", () => {
-  setupToggleListeners();
-  setupDataLoadingAndListeners();
-  if(!sessionStorage.getItem('introProjectShown')) {
-    setupIntroduceProject();
-
-    sessionStorage.setItem('introProjectShown', true);
-  }
-  window.addEventListener("beforeunload", () => {
-    // sessionStorage.removeItem('introProjectShown');
-  })
-});
+import{setupToggleListeners as e}from"./shared/menuToggle.js";import{setupDataLoadingAndListeners as t}from"./data/data.js";import{setupIntroduceProject as o}from"./shared/introProject.js";document.addEventListener("DOMContentLoaded",()=>{e(),t(),sessionStorage.getItem("introProjectShown")||(o(),sessionStorage.setItem("introProjectShown",!0)),window.addEventListener("beforeunload",()=>{})});

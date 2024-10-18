@@ -1,10 +1,1 @@
-console.log("Running scripts");
-
-document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    var modal = document.getElementById("toast-default");
-    if (modal) {
-      modal.classList.add("hidden");
-    }
-  }, 8000);
-});
+console.log("Running scripts"),document.addEventListener("DOMContentLoaded",function(){setTimeout(function(){var n=document.getElementById("toast-default");n&&n.classList.add("hidden")},8e3)});

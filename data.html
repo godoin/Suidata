@@ -39,6 +39,10 @@
     <link rel="prefetch" href="data.html" as="document" fetchpriority="low" /> 
     <link rel="prefetch" href="dashboard.html" as="document" fetchpriority="low" />
 
+    <!-- Prefetch JSON files -->
+    <link rel="prefetch" href="/assets/json/map.json" as="fetch" type="application/json" crossorigin="anonymous" fetchpriority="low" />
+    <link rel="prefetch" href="/assets/json/data.json" as="fetch" type="application/json" crossorigin="anonymous" fetchpriority="low" />
+
     <!-- Module Links -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" fetchpriority="low" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" fetchpriority="low"></script>
@@ -70,14 +74,17 @@
               <header>
                 <h1 class="title">Suidata | Explore Global Mortality <br/> 1979-2016</h1>
                 <p class="description">This is a revamped project that was a requirement for CSE3 Analytics Programming. Mainly to preprocess and visualize data but in the web.</p>
-                <p class="description">
+                <!-- <p class="description">
                   Thanks to Larry Tesler for creating the <kbd>Ctrl</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>V</kbd> otherwise I would have got a stroke from annotating the map and mortality dataset.
-                </p>
+                </p> -->
               </header>
             </div>
             <div class="special-thanks">
               <span class="title">Tools Used</span>
               <ul class="list">
+                <li class="item-description">
+                  <kbd>Ctrl</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>V</kbd> by Larry Lester.
+                </li>
                 <li class="item-description">
                   GADM Dataset
                 </li>

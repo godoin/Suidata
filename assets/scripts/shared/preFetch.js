@@ -20,20 +20,17 @@ const updateMainStyles = (targetUrl, mainSelector) => {
   const html = document.querySelector("html");
   main.classList.remove("index", "about", "works", "playground", "gallery");
 
-  if (targetUrl === "http://suidata.pages.dev/index.html") {
-    main.classList.add("index");
+  if (targetUrl === "http://suidata.pages.dev/index.html" || targetUrl === "https://suidata.pages.dev/index.html" || targetUrl === "http://suidata.pages.dev/") {
+    main.classList.add("about-container");
     html.classList.remove("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/about") {
-    main.classList.add("about");
+  } else if (targetUrl === "http://suidata.pages.dev/dashboard.html" || targetUrl === "https://suidata.pages.dev/dashboard.html") {
+    main.classList.add("dashboard-container"); 
     html.classList.remove("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/works") {
-    main.classList.add("works");
+  } else if (targetUrl === "http://suidata.pages.dev/data.html" || targetUrl === "https://suidata.pages.dev/data.html") {
+    main.classList.add("data-container");
     html.classList.remove("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/playground") {
-    main.classList.add("playground");
-    html.classList.add("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/gallery") {
-    main.classList.add("gallery");
+  } else if (targetUrl === "http://suidata.pages.dev/map.html" || targetUrl === "https://suidata.pages.dev/map.html") {
+    main.classList.add("map-container");
     html.classList.add("no-scroll");
   }
 };

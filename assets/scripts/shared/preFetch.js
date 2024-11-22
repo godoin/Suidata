@@ -48,7 +48,44 @@ const updateMainStyles = (targetUrl, mainSelector) => {
       html.classList.remove("no-scroll");
     }
   } else {
-    console.error(`Error the page ${targetUrl} does not exist`);
+    console.error(`Error the page ${targetUrl} does not exist`);const updateMainStyles = (targetUrl, mainSelector) => {
+  const main = document.querySelector(mainSelector);
+  const html = document.querySelector("html");
+
+  const urlClassMap = {
+    "/": "about-container",
+    "/index.html": "about-container",
+    "/dashboard.html": "dashboard-container",
+    "/dashboard": "dashboard-container",
+    "/data.html": "data-container",
+    "/data": "data-container",
+    "/map.html": "map-container",
+    "/map": "map-container"
+  };
+
+  // Extract pathname from the URL
+  const urlPath = new URL(targetUrl).pathname;
+
+  // Remove all classes
+  main.classList.remove(
+    "about-container",
+    "dashboard-container",
+    "data-container",
+    "map-container"
+  );
+
+  // Add class if it matches
+  if (urlClassMap[urlPath]) {
+    main.classList.add(urlClassMap[urlPath]);
+
+    // Special case for `map-container`
+    if (urlClassMap[urlPath] === "map-container") {
+      html.classList.add("no-scroll");
+    } else {
+      html.classList.remove("no-scroll");
+    }
+  }
+};
   }
 };
 

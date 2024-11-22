@@ -18,20 +18,35 @@ const updateNavbarActiveState = (targetUrl) => {
 const updateMainStyles = (targetUrl, mainSelector) => {
   const main = document.querySelector(mainSelector);
   const html = document.querySelector("html");
-  main.classList.remove("about-container", "dashboard-container", "data-container", "map-container");
 
-  if (targetUrl === "http://suidata.pages.dev/index.html" || targetUrl === "https://suidata.pages.dev/index.html" || targetUrl === "http://suidata.pages.dev/") {
-    main.classList.add("about-container");
-    html.classList.remove("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/dashboard.html" || targetUrl === "https://suidata.pages.dev/dashboard.html") {
-    main.classList.add("dashboard-container"); 
-    html.classList.remove("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/data.html" || targetUrl === "https://suidata.pages.dev/data.html") {
-    main.classList.add("data-container");
-    html.classList.remove("no-scroll");
-  } else if (targetUrl === "http://suidata.pages.dev/map.html" || targetUrl === "https://suidata.pages.dev/map.html") {
-    main.classList.add("map-container");
-    html.classList.add("no-scroll");
+  const urlClassMap = {
+    "/": "about-container",
+    "/index.html": "about-container",
+    "/dashboard.html": "dashboard-container",
+    "/dashboard": "dashboard-container",
+    "/data.html": "data-container",
+    "/data": "data-container",
+    "/map.html": "map-container",
+    "/map": "map-container"
+  };
+
+  const urlPath = new URL(targetUrl).pathname;
+
+  main.classList.remove(
+    "about-container",
+    "dashboard-container",
+    "data-container",
+    "map-container"
+  );
+
+  if (urlClassMap[urlPath]) {
+    main.classList.add(urlClassMap[urlPath]);
+
+    if (urlClassMap[urlPath] === "map-container") {
+      html.classList.add("no-scroll");
+    } else {
+      html.classList.remove("no-scroll");
+    }
   }
 };
 

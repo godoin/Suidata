@@ -52,7 +52,10 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="loader-container" id="loader">
+      <div id="spinner"></div>
+    </div>
+    <div class="container" id="content">
       <div class="overlay" id="overlay"></div>
       <dialog id="introProject">
         <div class="wrapper">
@@ -119,7 +122,7 @@
         <nav class="navbar">
             <div class="container">
                 <!-- Left Content -->
-                <section class="left-content">
+                <div class="left-content">
                 <a href="/" class="logo-wrapper">
                     <img
                       src="/assets/images/logo.svg"
@@ -129,7 +132,7 @@
                     />
                     <span class="title">Suidata</span>
                 </a>
-                </section>
+                </div>
             
                 <!-- Right Content -->
                 <div class="right-content">

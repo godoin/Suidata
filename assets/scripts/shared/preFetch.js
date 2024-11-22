@@ -47,6 +47,8 @@ const updateMainStyles = (targetUrl, mainSelector) => {
     } else {
       html.classList.remove("no-scroll");
     }
+  } else {
+    console.error(`Error the page ${targetUrl} does not exist`);
   }
 };
 

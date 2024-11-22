@@ -2,7 +2,7 @@ let handleLoading = (e, n) => {
     let t = document.getElementById(e),
       o = document.getElementById(n);
     t && o
-      ? ((t.style.display = "none"), (o.style.display = "flex"))
+      ? ((t.classList.remove("show")), (o.classList.add("show")))
       : console.error("Error: loader and content not found...");
   },
   setupLoading = () => {

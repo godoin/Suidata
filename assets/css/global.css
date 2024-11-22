@@ -106,6 +106,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  overflow-x: hidden;
   background-color: #fff;
 }
 a {
@@ -114,23 +115,26 @@ a {
 html.no-scroll {
   overflow: hidden;
 }
-main.about-container,
-main.about-container section {
+section {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s, transform 1s;
 }
-main.about-container.show,
-main.about-container section.show {
+section.show {
   opacity: 1;
   transform: translateY(0);
+}
+.loader-container {
+  display: none;
+}
+.loader-container.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #loader {
   min-height: 100vh;
   min-width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 #spinner {
   min-width: 5em;
@@ -152,6 +156,9 @@ main.about-container section.show {
 }
 #content {
   display: none;
+}
+#content.show {
+  display: flex;
 }
 .container {
   display: flex;

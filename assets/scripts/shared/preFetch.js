@@ -1,1 +1,88 @@
-import{attachMultipleEventHandlerBySelectorAll as e}from"./eventHandlers.js";let updateNavbarActiveState=e=>{let t=document.querySelectorAll(".nav-item");t.forEach(t=>{let a=t.querySelector("a");a&&(a.href===e?t.classList.add("active"):t.classList.remove("active"))})},updateMainStyles=(e,t)=>{let a=document.querySelector(t),s=document.querySelector("html");a.classList.remove("index","dashboard","map","data"),"http://suidata.pages.dev/"===e?(a.classList.add("about-container"),s.classList.remove("no-scroll")):"http://suidata.pages.dev/dashboard.html"===e?(a.classList.add("dashboard-container"),s.classList.remove("no-scroll")):"http://suidata.pages.dev/map.html"===e?(a.classList.add("map-container"),s.classList.remove("no-scroll")):"http://suidata.pages.dev/data.html"===e&&(a.classList.add("data-container"),s.classList.add("no-scroll"))},scrollToTop=(e,t)=>{window.scrollTo({top:e,behavior:t})},handlePreFetching=async(e,t,a)=>{e.preventDefault();let s=t.href,r=document.querySelector(a);await fetch(s).then(e=>e.text()).then(e=>{let t=new DOMParser,l=t.parseFromString(e,"text/html"),o=l.querySelector(a).innerHTML;r.innerHTML=o,window.history.pushState({},"",s)}).catch(e=>console.error(`Error prefetching: ${e}`)),updateMainStyles(s,a),updateNavbarActiveState(s),scrollToTop(0,"smooth")},setupPreFetching=()=>{e(".nav-item","click",handlePreFetching,"main")};export{setupPreFetching};
+/**
+ * preFetching.js
+ */
+
+import { attachMultipleEventHandlerBySelectorAll } from "./eventHandlers.js";
+
+const updateNavbarActiveState = (targetUrl) => {
+  const navItems = document.querySelectorAll(".nav-item");
+
+  navItems.forEach((item) => {
+    const link = item.querySelector("a");
+    if (link) {
+      link.href === targetUrl ? item.classList.add("active") : item.classList.remove("active");
+    }
+  });
+};
+
+const updateMainStyles = (targetUrl, mainSelector) => {
+  const main = document.querySelector(mainSelector);
+  const html = document.querySelector("html");
+  main.classList.remove("index", "about", "works", "playground", "gallery");
+
+  if (targetUrl === "http://suidata.pages.dev/index.html") {
+    main.classList.add("index");
+    html.classList.remove("no-scroll");
+  } else if (targetUrl === "http://suidata.pages.dev/about") {
+    main.classList.add("about");
+    html.classList.remove("no-scroll");
+  } else if (targetUrl === "http://suidata.pages.dev/works") {
+    main.classList.add("works");
+    html.classList.remove("no-scroll");
+  } else if (targetUrl === "http://suidata.pages.dev/playground") {
+    main.classList.add("playground");
+    html.classList.add("no-scroll");
+  } else if (targetUrl === "http://suidata.pages.dev/gallery") {
+    main.classList.add("gallery");
+    html.classList.add("no-scroll");
+  }
+};
+
+const scrollToTop = (position, style) => {
+  window.scrollTo({
+    top: position,
+    behavior: style,
+  });
+};
+
+const handlePreFetching = async (e, link, mainSelector) => {
+  e.preventDefault();
+
+  const targetUrl = link.href;
+  const mainContainer = document.querySelector(mainSelector);
+  const cachedPage = sessionStorage.getItem(targetUrl);
+
+  try {
+    const res = await fetch(targetUrl);
+    const html = await res.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const newHtml = doc.querySelector(mainSelector).innerHTML;
+    mainContainer.innerHTML = newHtml;
+    window.history.pushState({}, "", targetUrl);
+  } catch (error) {
+    console.error(`Error prefetching: ${error}`);
+  } finally {
+    updateMainStyles(targetUrl, mainSelector);
+    updateNavbarActiveState(targetUrl);
+    scrollToTop(0, "smooth");
+  }
+};
+
+const setupPreFetching = () => {
+  // console.log("Running prefetching...");
+
+  const navLinks = ".nav-item a";
+  const eventType = "click";
+  const mainSelector = "main";
+
+  attachMultipleEventHandlerBySelectorAll(
+    navLinks,
+    eventType,
+    handlePreFetching,
+    mainSelector
+  );
+};
+
+export { setupPreFetching };

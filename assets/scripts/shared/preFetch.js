@@ -18,7 +18,7 @@ const updateNavbarActiveState = (targetUrl) => {
 const updateMainStyles = (targetUrl, mainSelector) => {
   const main = document.querySelector(mainSelector);
   const html = document.querySelector("html");
-  main.classList.remove("index", "about", "works", "playground", "gallery");
+  main.classList.remove("about-container", "dashboard-container", "data-container", "map-container");
 
   if (targetUrl === "http://suidata.pages.dev/index.html" || targetUrl === "https://suidata.pages.dev/index.html" || targetUrl === "http://suidata.pages.dev/") {
     main.classList.add("about-container");

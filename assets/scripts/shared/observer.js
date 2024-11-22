@@ -1,1 +1,31 @@
-let options={root:null,rootMargin:"0",threshold:.5},observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add("show")},options)}),setupSections=()=>{let e=document.querySelectorAll("section");e.forEach(e=>observer.observe(e));let o=document.querySelector("footer");o&&observer.observe(o);let r=document.querySelector("main");r&&observer.observe(r)};export{setupSections};
+/**
+ * observer.js
+ */
+
+const options = {
+  root: null,
+  rootMargin: "0",
+  threshold: 0.5,
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+    entry.target.classList.add("show");
+  }, options);
+});
+
+const setupSections = () => {
+  const sections = document.querySelectorAll("section");
+  sections.forEach((el) => observer.observe(el));
+
+  const main = document.querySelector("main");
+  if (main) observer.observe(main);
+
+  const footer = document.querySelector("footer");
+  if (footer) observer.observe(footer);
+};
+
+export { setupSections };

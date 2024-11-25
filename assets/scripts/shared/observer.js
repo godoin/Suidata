@@ -21,11 +21,11 @@ const setupSections = () => {
   const sections = document.querySelectorAll("section");
   sections.forEach((el) => observer.observe(el));
 
-  const main = document.querySelector("main");
-  if (main) observer.observe(main);
+  // const main = document.querySelector("main");
+  // if (main) observer.observe(main);
 
-  const footer = document.querySelector("footer");
-  if (footer) observer.observe(footer);
+  // const footer = document.querySelector("footer");
+  // if (footer) observer.observe(footer);
 };
 
 export { setupSections };

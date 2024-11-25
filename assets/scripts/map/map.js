@@ -4,16 +4,16 @@ let map,tiles,info=L.control(),legend=L.control(),yearSelectControl=L.control(),
       <span class="value">${t.total_mortality||"N/A"}</span>
     </header>
     <div class="content">
-      <section class="sex">
+      <div class="section-group" class="sex">
         <h2>Sex</h2>
           ${renderGroup("Male",t.male,n.male)}
           ${renderGroup("Female",t.female,n.female)}
-      </section>
-      <section class="age">
+      </div>
+      <div class="section-group" class="age">
         <h2>Age Groups</h2>
           ${Object.entries(n).filter(([e])=>e.startsWith("age_group_")).map(([e,a])=>renderGroup(e.replace(/_/g,"-").replace("age-group-","")+" years",t[e],a)).join("")} 
-      </section>
-      <section id="mortality-countries"></section>
+      </div>
+      <div class="section-group" id="mortality-countries"></div>
     </div>
   `},renderGroup=(e,a,t)=>`
   <div class="group">
